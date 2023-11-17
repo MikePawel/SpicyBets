@@ -1,0 +1,7 @@
+.appContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  overflow-y: auto;
+  max-height: 100vh;
+}
