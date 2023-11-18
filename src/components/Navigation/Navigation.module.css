@@ -1,10 +1,10 @@
 .navigation {
-  padding: 16px;
+  padding: 10px;
   background-color: #1D1E22;
   color: #FFF;
   position: fixed;
   top: 0;
-  width: calc(100vw - 32px);
+  width: calc(100vw - 20px);
   z-index: 1000;
 }
 

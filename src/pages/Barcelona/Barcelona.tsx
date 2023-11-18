@@ -464,7 +464,6 @@ export default function Barcelona() {
 
             {exploding && <ConfettiExplosion />}
             <ThemeProvider theme={darkTheme}>
-               <div className="mini-container">
                  <Typography>
                    You have{" "}
                    <strong style={{ color: "#E74C3C" }}>
@@ -473,10 +472,10 @@ export default function Barcelona() {
                    tokens
                    <br />
                    <br />
-                   <a href="#" className="custom-button">BUY TOKENs</a>
+                   <a href="#" className="header-button">BUY TOKENs</a>
                  </Typography>
                   {exploding && <ConfettiExplosion />}
-               </div>
+
             </ThemeProvider>
           </div>
 
