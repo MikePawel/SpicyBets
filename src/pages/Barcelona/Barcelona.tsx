@@ -596,6 +596,17 @@ export default function Barcelona() {
             </ThemeProvider>
           </div>
 
+          <div class="column-container">
+                <div class="text-column">
+                <h2>Become Part of our Community!</h2>
+                <p>Place bets on any game your team plays and amp up the excitement. Join our community for a thrilling sports experience. Immerse yourself in the game, feel the adrenaline, and connect with fellow enthusiasts. Betting makes every moment count!</p>
+
+                </div>
+                <div class="image-column">
+                  <img src={PlayerImage} alt="Tokens"  />
+                </div>
+              </div>
+
           <ThemeProvider theme={darkTheme}>
             <div className="center-container">
               <div className="bet-container-row">
@@ -924,16 +935,7 @@ export default function Barcelona() {
                 </div>
               </div>
 
-              <div class="column-container">
-                <div class="text-column">
-                <h2>Become Part of our Community!</h2>
-                <p>Place bets on any game your team plays and amp up the excitement. Join our community for a thrilling sports experience. Immerse yourself in the game, feel the adrenaline, and connect with fellow enthusiasts. Betting makes every moment count!</p>
-
-                </div>
-                <div class="image-column">
-                  <img src={PlayerImage} alt="Tokens"  />
-                </div>
-              </div>
+            
 
               <div class="lottery-container">
                 <div class="lottery-text-column">
