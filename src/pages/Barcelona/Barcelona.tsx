@@ -1037,6 +1037,31 @@ const handleRandomNumberRequest = async () => {
                 </div>
               </div>
 
+
+          <div className="bet-swipe-container">
+            <h1>Icon Descriptions TBD</h1>
+            <ThemeProvider theme={darkTheme}>
+              <Typography>
+                <div className="team-swipe-container">
+                  <img
+                    src={team1Logo}
+                    alt="Team 1 Logo"
+                    className="FCB"
+                  />
+                  <span className="centered-colon">:</span>
+                  <img
+                    src={team2Logo}
+                    alt="Team 2 Logo"
+                    className="TeamBet"
+                  />
+                </div>
+              </Typography>
+
+            </ThemeProvider>
+          </div>
+
+
+
           <ThemeProvider theme={darkTheme}>
             <div className="center-container">
               <div className="bet-container-row">
@@ -1411,12 +1436,10 @@ const handleRandomNumberRequest = async () => {
               </div>
 
 
-              <div style={{ paddingTop: "50px" }}></div>
-              <div className="Lottery-Div">
-                <Paper style={paperStyle}>
+
+              <div className="lottery-container">
+                <div>
                   Try your luck!
-
-
                   <Dialog
                     fullScreen={fullScreen}
                     open={openDialogWin}
@@ -1462,13 +1485,10 @@ const handleRandomNumberRequest = async () => {
                     </DialogActions>
                   </Dialog>
                   <Button onClick={() => handleClickOpenDialogLoose()}>Loose Dialog</Button>
-                </Paper>
+              </div>
               </div>
 
-              <div style={{ paddingTop: "50px" }}></div>
-
-              <div className="Donation-Div">
-                <Paper style={paperStyle}>
+                <div className="donation-container">
                 <Button variant="contained" onClick={() => handleWithdraw()} className="withdraw-button">
                    Withdraw   
                   </Button>
@@ -1494,13 +1514,10 @@ const handleRandomNumberRequest = async () => {
                       Total Trees: {totalTrees}
                     </Typography>
                   </div>
-                </Paper>
               </div>
           </ThemeProvider>
         </>
       )}
-      
-      
       
 
       {tokenAmount == 0 && (
