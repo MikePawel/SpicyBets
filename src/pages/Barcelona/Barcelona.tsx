@@ -644,11 +644,12 @@ export default function Barcelona() {
   const [team1Score, setTeam1Score] = useState("");
   const [team2Score, setTeam2Score] = useState("");
   const [betAmount, setBetAmount] = useState("");
+  const [betAmount2, setBetAmount2] = useState("");
   const [exploding, setExploding] = useState(false)
   const [requestId, setRequestId] = useState(null);
   const [currTime, setCurrTime] = useState("")
 
-  const [isHuman, setIsHuman] = useState(true)
+  const [isHuman, setIsHuman] = useState(false)
 
   const { open, setOpen } = useIDKit()
 
@@ -987,7 +988,7 @@ const handleRandomNumberRequest = async () => {
   };
 
   const openLinkInNewWindow = () => {
-    window.open('https://spicy-faucet.chiliz.com/', '_blank');
+    window.open('https://www.chiliz.net/exchange/CHZ/USDT', '_blank');
   };
   
 
@@ -1125,8 +1126,8 @@ const handleRandomNumberRequest = async () => {
                         type="number"
                         placeholder="Bet Amount"
                         min="0"
-                        value={betAmount}
-                        onChange={(e) => setBetAmount(e.target.value)}
+                        value={betAmount2}
+                        onChange={(e) => setBetAmount2(e.target.value)}
                         className="bet-amount-input"
                       />
                     </div>
@@ -1185,8 +1186,6 @@ const handleRandomNumberRequest = async () => {
                         type="number"
                         placeholder="Bet Amount"
                         min="0"
-                        value={betAmount}
-                        onChange={(e) => setBetAmount(e.target.value)}
                         className="bet-amount-input"
                       />
                     </div>
@@ -1245,8 +1244,6 @@ const handleRandomNumberRequest = async () => {
                         type="number"
                         placeholder="Bet Amount"
                         min="0"
-                        value={betAmount}
-                        onChange={(e) => setBetAmount(e.target.value)}
                         className="bet-amount-input"
                       />
                     </div>
@@ -1305,8 +1302,6 @@ const handleRandomNumberRequest = async () => {
                         type="number"
                         placeholder="Bet Amount"
                         min="0"
-                        value={betAmount}
-                        onChange={(e) => setBetAmount(e.target.value)}
                         className="bet-amount-input"
                       />
                     </div>
@@ -1365,8 +1360,6 @@ const handleRandomNumberRequest = async () => {
                         type="number"
                         placeholder="Bet Amount"
                         min="0"
-                        value={betAmount}
-                        onChange={(e) => setBetAmount(e.target.value)}
                         className="bet-amount-input"
                       />
                     </div>
@@ -1425,8 +1418,6 @@ const handleRandomNumberRequest = async () => {
                         type="number"
                         placeholder="Bet Amount"
                         min="0"
-                        value={betAmount}
-                        onChange={(e) => setBetAmount(e.target.value)}
                         className="bet-amount-input"
                       />
                     </div>
@@ -1469,9 +1460,9 @@ const handleRandomNumberRequest = async () => {
 
                 <div className="donation-container">
                   <div className="donation-content">
-                <Button variant="contained" onClick={() => handleWithdraw()} className="withdraw-button">
+                {/* <Button variant="contained" onClick={() => handleWithdraw()} className="withdraw-button">
                    Withdraw   
-                  </Button>
+                  </Button> */}
                   <div className="tree-interaction-container">
                     <div className="tree-counter">
                       <Button onClick={decrementTrees}>-</Button>
