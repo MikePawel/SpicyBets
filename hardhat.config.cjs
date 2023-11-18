@@ -3,6 +3,7 @@ require("@nomiclabs/hardhat-waffle");
 require('dotenv').config();
 
 INFURA_API_KEY_MUMBAI = "https://polygon-mumbai.infura.io/v3/a146daf63d93490995823f0910f50118"
+INFURA_API_KEY_ARBITRUM = "https://arbitrum-goerli.infura.io/v3/a146daf63d93490995823f0910f50118"
 INFURA_API_KEY_SEPOLIA = "https://sepolia.infura.io/v3/a146daf63d93490995823f0910f50118"
 INFURA_API_KEY_CELO = "https://celo-alfajores.infura.io/v3/a146daf63d93490995823f0910f50118"
 INFURA_API_KEY_POLYGON = "https://polygon-mainnet.infura.io/v3/a146daf63d93490995823f0910f50118"
@@ -35,6 +36,10 @@ module.exports = {
     },
     chiliz: {
       url: `${CHILIZ_RPC}`,
+      accounts: [PRIVATE_KEY],
+    },
+    arbitrum: {
+      url: `${INFURA_API_KEY_ARBITRUM}`,
       accounts: [PRIVATE_KEY],
     },
   },
