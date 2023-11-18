@@ -31,7 +31,8 @@ import team6Logo from "../../assets/NAP.png";
 import team7Logo from "../../assets/VCF.png";
 import FanTokenGIF from "../../assets/FanToken.gif";
 import PlayerImage from "../../assets/FanTokenIMG.webp";
-import ConfettiExplosion from 'react-confetti-explosion';
+import Nouns from "../../assets/nounify.png";
+
 import { useIDKit } from '@worldcoin/idkit'
 
 
@@ -1448,61 +1449,16 @@ const handleRandomNumberRequest = async () => {
 
 
 
-              <div className="lottery-container">
-                <div>
-                  <Link to='/test'>Gehe zu Test page</Link>
-                  Try your luck!
-                  <Button variant="contained" onClick={handleRandomNumberRequest} className="random-number-request-button">
-                    Request Random Number
-                  </Button>
-                  <Dialog
-                    fullScreen={fullScreen}
-                    open={openDialogWin}
-                    onClose={handleCloseDialogWin}
-                    aria-labelledby="responsive-dialog-title"
-                  >
+            <div className="column-container">
+              <div className="text-column">
+                <h2>Feeling green today? Plant a tree!</h2>
+                <p>Embrace the power of positive change! With just 5 Chiliz tokens, you can make a lasting impact on the environment. Plant a tree today and contribute to a greener, healthier future. Every small action adds up, and your investment in nature will echo for generations to come. </p>
 
-                    <DialogTitle id="responsive-dialog-title">
-                      {"CONTRATULATIONS, YOU WON"}&nbsp; &#127881; &#127881; &#127881;
-                    </DialogTitle>
-                    <DialogContent>
-                      <DialogContentText>
-                        You just doubled your money!
-                      </DialogContentText>
-                    </DialogContent>
-                    <DialogActions>
-                      <Button onClick={handleCloseDialogWin} autoFocus>
-                        Awesome!
-                      </Button>
-                    </DialogActions>
-                  </Dialog>
-                  {exploding && <ConfettiExplosion />}
-                  <Button onClick={() => handleClickOpenDialogWin()}>Win Dialog</Button>
-
-
-                  <Dialog
-                    fullScreen={fullScreen}
-                    open={openDialogLoose}
-                    onClose={handleCloseDialogLoose}
-                    aria-labelledby="responsive-dialog-title"
-                  >
-                    <DialogTitle id="responsive-dialog-title">
-                      {"You lost :("}
-                    </DialogTitle>
-                    <DialogContent>
-                      <DialogContentText>
-                        Try your luck again to double your money!
-                      </DialogContentText>
-                    </DialogContent>
-                    <DialogActions>
-                      <Button onClick={handleCloseDialogLoose} autoFocus>
-                        Try again
-                      </Button>
-                    </DialogActions>
-                  </Dialog>
-                  <Button onClick={() => handleClickOpenDialogLoose()}>Loose Dialog</Button>
               </div>
+              <div className="image-column">
+                <img src={Nouns} alt="Nounifytree"  />
               </div>
+            </div>
 
 
                 <div className="donation-container">
