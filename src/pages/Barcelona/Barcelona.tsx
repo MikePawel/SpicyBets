@@ -1489,6 +1489,7 @@ const handleRandomNumberRequest = async () => {
               </div>
 
                 <div className="donation-container">
+                  <div className="donation-content">
                 <Button variant="contained" onClick={() => handleWithdraw()} className="withdraw-button">
                    Withdraw   
                   </Button>
@@ -1515,6 +1516,7 @@ const handleRandomNumberRequest = async () => {
                     </Typography>
                   </div>
               </div>
+                </div>
           </ThemeProvider>
         </>
       )}
