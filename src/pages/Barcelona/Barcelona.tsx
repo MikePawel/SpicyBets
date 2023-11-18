@@ -739,6 +739,8 @@ export default function Barcelona() {
     handleGetTokenAmount();
     setOpen(true)
     timeInSeconds()
+    fetchTotalTree()
+    fetchTreeCount()
 
   }, [wallet]);
 
