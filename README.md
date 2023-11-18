@@ -1,4 +1,4 @@
-# SpicyBets is the hottest betting platform for sporting Fans!
+# SpicyBets - ETHGlobal Istanbul Hackathon 2023 
 
 Introducing SpicyBets – a groundbreaking betting platform designed to engage sporting enthusiasts and empower them to contribute to charitable causes. Our platform brings together the thrill of match predictions, the excitement of a lottery game, and the fulfillment of supporting both your favorite football club and environmental sustainability.
 
@@ -39,5 +39,40 @@ Seamless interaction:
 Donations:
 Self designed Nouns were produced to match the intention of planting trees. A smart contract will be paid that is directly linked to funding the tree planting process.
 
+## How to deploy and run locally
 
+- Clone the repo
+- Add a .env file with the content (these parameters are mandatory):
+
+```
+#Wallet connect Project ID
+VITE_PROJECT_ID=""
+
+#Private Key for paymaster on Arbitrum
+PRIVATE_KEY=""
+VITE_PRIVATE_KEY=""
+
+#World App ID
+VITE_WLD_APP_ID=''
+PUBLIC_WLD_APP_ID=''
+
+```
+
+- Follow the [Worldcoin docs](https://docs.worldcoin.org/) and add the credentials
+- Follow the [WalletConnect Docs](https://docs.walletconnect.com/) and add the credentials
+- Add the private key of the paymaster that handles the gas less fees
+
+After everythin is done run this command:
+
+```
+  npm i
+  npm run dev
+  ```
+
+Then run this command in another terminal:
+```
+  node server.mjs
+  ```
+
+The demo video can be found [here](https://www.youtube.com/watch?v=H6qcWNX2bUI)
 
