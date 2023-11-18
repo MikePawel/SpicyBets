@@ -1,6 +1,6 @@
 .navigation {
   padding: 10px;
-  background-color: #1D1E22;
+  background-color: #c92c50;
   color: #FFF;
   position: fixed;
   top: 0;
@@ -26,7 +26,7 @@
   display: inline-block;
   line-height: 36px;
   height: 36px;
-  background: linear-gradient(to right, #2bf9f9, #e757fa);
+  background: linear-gradient(to right, #ececec, rgb(236, 236, 236));
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
