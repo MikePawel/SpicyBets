@@ -921,33 +921,15 @@ export default function Barcelona() {
               </div>
 
               <div class="lottery-container">
-                <div className="content">
-                  Hier kommt irgendwas zur lottery rein, wie soll das aussehen?
+                <div class="lottery-text-column">
+                  FLIP A COIN TO WIN
                 </div>
-                <div className="gif-container">
-                  <img src={FanTokenGIF} alt="FanToken GIF" style={{ width: '200px', height: '200px' }} />
-                </div>
-                  {!isHuman && <>
-                    <IDKitWidget
-                    app_id={worldAppID}
-                    action="verify"
-                    signal="login"
-                    handleVerify={isSuccess}
-                    onSuccess={onSuccess}
-                    credential_types={["orb"]}
-                    enableTelemetry
-                  >
-                    {({ open }) => (
-                      <button onClick={open}>Verify with World ID</button>
-                    )}
-                  </IDKitWidget>
-                  
-                  </>}
-                  {isHuman && <div>you are a human</div>}
-                  
 
-                  <Button onClick={() => setExploding(false)}>Enter schmoney getter</Button>
-                  <Button onClick={() => setExploding(true)}>Simulate win</Button>
+                <div class="lottery-image-column">
+                  <div className="gif-container">
+                    <img src={FanTokenGIF} alt="FanToken GIF" style={{ width: '200px', height: '200px' }} />
+                  </div>
+                </div>
                 </div>
               </div>
 

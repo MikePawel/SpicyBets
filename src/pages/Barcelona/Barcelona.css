@@ -171,8 +171,6 @@
 }
 
 
-
-
 .tree-interaction-container {
     display: flex;
     flex-direction: column;
@@ -231,8 +229,20 @@
     margin-left: 150px;
     margin-right: 150px;
     height: 350px;
+    align-items: center;
+
 }
 
+.lottery-text-column{
+    max-width: 600px;
+    padding-right: 20px;
+    text-align: left;
+    font-size: xxx-large;
+}
+
+.lottery-image-column{
+
+}
 .content {
     flex: 1; /* Takes up remaining space */
     display: flex;
@@ -240,10 +250,6 @@
     justify-content: center;
 }
 
-.gif-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+
 
 .Donation-Div {}
