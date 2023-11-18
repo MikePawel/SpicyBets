@@ -58,7 +58,7 @@ export default function Main() {
 
           <div className="token-container">
             <ThemeProvider theme={darkTheme}>
-              <div className="container" elevation={10} variant="elevation" sx={{
+              <div className="token-list" elevation={10} variant="elevation" sx={{
                 width: 600,
                 height: 300,
                 borderRadius: 3,

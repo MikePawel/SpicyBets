@@ -20,9 +20,17 @@
     margin-top: 150px;
 }
 
+.token-list {
+    width: 500px;
+    max-height: 600px;
+    overflow-y: auto;
+    border-radius: 3px;
+    padding: 10px;
+}
+
 /* Media query for responsiveness */
 @media (max-width: 768px) {
-    .container {
+    .token-list {
         width: 90%;
         height: auto;
         top: 5%;
@@ -33,7 +41,7 @@
 }
 
 @media (max-width: 576px) {
-    .container {
+    .token-list {
         width: 95%;
     }
 }
