@@ -1,37 +1,176 @@
-
 .container {
-    width: 70%;
-    height: 60%;
-    margin: auto;
-    position: relative;
-    top: 10%;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-color: rgba(30, 30, 30, 0.75);
-    border-radius: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.barcelona-header {
+    background-color: rgba(29, 30, 34, 0.9);
+    padding: 10px;
+    border-radius: 25px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 2%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    color: #ffffff;
+}
+
+.mini-container {
+    padding: 15px;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #ffffff;
+}
+
+.custom-button {
+    text-decoration: none;
+    display: block;
+    color: #ececec;
+    background-color: #ea385a;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.1);
+    text-align: center;
+}
+.custom-button:hover {
+    background-color: #c92c50;
+    color: rgba(29, 30, 34, 0.8);
+}
+
+.bettingCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: rgba(29, 30, 34, 0.9);
+    padding: 16px;
+    margin: 8px;
+    border-radius: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    min-width: 250px;
+    height: 250px;
+}
+
+.team-logos-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.team-logo {
+    width: 50px; /* Adjust the width of the team logos */
+    height: auto;
+}
+
+.score-prediction-container,
+.bet-amount-container {
+    margin-bottom: 10px;
+}
+
+.score-input
+ {
+    width: 80px;
+    padding: 15px;
+    margin: 5px;
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+}
+.bet-amount-input{
+    width: 90px;
+    padding: 15px;
+    margin: 5px;
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+}
+
+.submit-bet-button {
+    text-decoration: none;
+    display: block;
+    color: #ececec;
+    background-color: #ea385a;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.1);
+    text-align: center;
+}
+
+.submit-bet-button:hover {
+    background-color: #c92c50;
+    color: rgba(29, 30, 34, 0.8);
+}
+
+
+
+
+.center-container {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.tree-interaction-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .tree-counter {
+    display: flex;
+    align-items: center;
     justify-content: center;
-    clip-path: polygon(0 0, 100% 0, 100% 85%, 50% 100%, 0 85%);
-    z-index: 1;
-    margin-top: 150px;
+    margin: 10px 0;
+  }
+  
+  .tree-counter button {
+    background-color: #4CAF50; /* Green background */
+    border: none;
+    color: white;
+    padding: 8px 16px; /* Smaller padding */
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px; /* Rounded corners */
+  }
+  
+  .tree-counter span {
+    margin: 0 10px;
+  }
+  
+  .tree-plant-button {
+    margin-top: 20px; 
+    margin-bottom: 40px; 
+  }
+  
+  .trees-planted-text {
+    margin-top: 20px; 
+  }
+
+
+.Reward-Div {
+    width: 80vw;
+    overflow-x: scroll;
+    display: flex;
 }
 
-/* Media query for responsiveness */
-@media (max-width: 768px) {
-    .container {
-        width: 90%;
-        height: auto;
-        top: 5%;
-        bottom: 5%;
-    }
+.Lottery-Div {
+  display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
 
-@media (max-width: 576px) {
-    .container {
-        width: 95%;
-    }
-}
+
+
+.Donation-Div {}
