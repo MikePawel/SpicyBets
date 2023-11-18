@@ -12,6 +12,7 @@ import {
   DialogTitle,
   Paper,
   ThemeProvider,
+  Tooltip,
   Typography,
   createTheme,
   useMediaQuery,
@@ -22,13 +23,14 @@ import { IDKitWidget } from "@worldcoin/idkit";
 import axios from "axios";
 import { ethers } from "ethers";
 import team1Logo from "../../assets/FCB.png";
-import team2Logo from "../../assets/AM.png";
+import team2Logo from "../../assets/ML.png";
 import team3Logo from "../../assets/GAL.png";
 import team4Logo from "../../assets/IBFK.png";
 import team5Logo from "../../assets/INTER-2.png";
 import team6Logo from "../../assets/NAP.png";
 import team7Logo from "../../assets/VCF.png";
 import FanTokenGIF from "../../assets/FanToken.gif";
+import PlayerImage from "../../assets/FanTokenIMG.webp";
 import ConfettiExplosion from 'react-confetti-explosion';
 import { useIDKit } from '@worldcoin/idkit'
 
@@ -958,7 +960,7 @@ export default function Barcelona() {
         <>
 
           <div className="barcelona-header">
-            <h2>Barcelona SpicyBets</h2>
+            <h1>Barcelona SpicyBets</h1>
 
             <ThemeProvider theme={darkTheme}>
                  <Typography>
@@ -986,6 +988,7 @@ export default function Barcelona() {
                         alt="Team 1 Logo"
                         className="team-logo"
                       />
+                      <span className="centered-colon">:</span>
                       <img
                         src={team2Logo}
                         alt="Team 2 Logo"
@@ -1022,12 +1025,17 @@ export default function Barcelona() {
                       />
                     </div>
 
+                    <div style={{display:'flex'}}>
+
+                    <Tooltip title="The Odds of Barcelona winning are 85%" arrow>
                     <div
                       variant="contained"
                       onClick={submitBet}
                       className="submit-bet-button"
                     >
                       SUBMIT
+                    </div>
+                    </Tooltip>
                     </div>
 
                   </div>
@@ -1039,6 +1047,7 @@ export default function Barcelona() {
                         alt="Team 1 Logo"
                         className="team-logo"
                       />
+                      <span className="centered-colon">:</span>
                       <img
                         src={team3Logo}
                         alt="Team 3 Logo"
@@ -1074,6 +1083,7 @@ export default function Barcelona() {
                         className="bet-amount-input"
                       />
                     </div>
+                    <Tooltip title="The Odds of Barcelona winning are 67%" arrow>
                     <div
                       variant="contained"
                       onClick={submitBet}
@@ -1081,6 +1091,7 @@ export default function Barcelona() {
                     >
                       SUBMIT
                     </div>
+                    </Tooltip>
 
                   </div>
 
@@ -1091,6 +1102,7 @@ export default function Barcelona() {
                         alt="Team 1 Logo"
                         className="team-logo"
                       />
+                      <span className="centered-colon">:</span>
                       <img
                         src={team4Logo}
                         alt="Team 4 Logo"
@@ -1142,6 +1154,7 @@ export default function Barcelona() {
                         alt="Team 1 Logo"
                         className="team-logo"
                       />
+                      <span className="centered-colon">:</span>
                       <img
                         src={team5Logo}
                         alt="Team 5 Logo"
@@ -1193,6 +1206,7 @@ export default function Barcelona() {
                         alt="Team 1 Logo"
                         className="team-logo"
                       />
+                      <span className="centered-colon">:</span>
                       <img
                         src={team6Logo}
                         alt="Team 6 Logo"
@@ -1244,6 +1258,7 @@ export default function Barcelona() {
                         alt="Team 1 Logo"
                         className="team-logo"
                       />
+                      <span className="centered-colon">:</span>
                       <img
                         src={team7Logo}
                         alt="Team 7 Logo"
@@ -1290,36 +1305,27 @@ export default function Barcelona() {
                 </div>
               </div>
 
-              <div className="gif-container">
-                <img src={`data:image/gif;base64,${FanTokenGIF}`} alt="FanToken GIF" style={{ width: '200px', height: '200px' }} />
+              <div class="column-container">
+                <div class="text-column">
+                <h2>Become Part of our Community!</h2>
+                <p>Place bets on any game your team plays and amp up the excitement. Join our community for a thrilling sports experience. Immerse yourself in the game, feel the adrenaline, and connect with fellow enthusiasts. Betting makes every moment count!</p>
+
+                </div>
+                <div class="image-column">
+                  <img src={PlayerImage} alt="Tokens"  />
+                </div>
               </div>
 
               <div class="lottery-container">
-                <div className="content">
-                  Hier kommt irgendwas zur lottery rein, wie soll das aussehen?
+                <div class="lottery-text-column">
+                  FLIP A COIN TO WIN
                 </div>
 
-                  {!isHuman && <>
-                    <IDKitWidget
-                    app_id={worldAppID}
-                    action="verify"
-                    signal="login"
-                    handleVerify={isSuccess}
-                    onSuccess={onSuccess}
-                    credential_types={["orb"]}
-                    enableTelemetry
-                  >
-                    {({ open }) => (
-                      <button onClick={open}>Verify with World ID</button>
-                    )}
-                  </IDKitWidget>
-                  
-                  </>}
-                  {isHuman && <div>you are a human</div>}
-                  
-
-                  <Button onClick={() => setExploding(false)}>Enter schmoney getter</Button>
-                  <Button onClick={() => setExploding(true)}>Simulate win</Button>
+                <div class="lottery-image-column">
+                  <div className="gif-container">
+                    <img src={FanTokenGIF} alt="FanToken GIF" style={{ width: '200px', height: '200px' }} />
+                  </div>
+                </div>
                 </div>
               </div>
 
