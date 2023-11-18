@@ -12,6 +12,7 @@ import {
   DialogTitle,
   Paper,
   ThemeProvider,
+  Tooltip,
   Typography,
   createTheme,
   useMediaQuery,
@@ -642,12 +643,17 @@ export default function Barcelona() {
                       />
                     </div>
 
+                    <div style={{display:'flex'}}>
+
+                    <Tooltip title="The Odds of Barcelona winning are 85%" arrow>
                     <div
                       variant="contained"
                       onClick={submitBet}
                       className="submit-bet-button"
                     >
                       SUBMIT
+                    </div>
+                    </Tooltip>
                     </div>
 
                   </div>
@@ -694,6 +700,7 @@ export default function Barcelona() {
                         className="bet-amount-input"
                       />
                     </div>
+                    <Tooltip title="The Odds of Barcelona winning are 67%" arrow>
                     <div
                       variant="contained"
                       onClick={submitBet}
@@ -701,6 +708,7 @@ export default function Barcelona() {
                     >
                       SUBMIT
                     </div>
+                    </Tooltip>
 
                   </div>
 

@@ -247,3 +247,36 @@
 }
 
 .Donation-Div {}
+
+
+.odds-button {
+    text-decoration: none;
+  display: block;
+  color: #ececec;
+  background-color: #ea385a;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 0 10px rgba(0, 123, 255, 0.1);
+  text-align: center;
+  position: relative;
+}
+  
+.hover-text {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #fff;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: max-content;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  }
+
+.odds-button:hover .hover-text {
+    display: block;
+}
