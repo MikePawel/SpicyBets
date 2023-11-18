@@ -16,6 +16,7 @@ import axios from "axios";
 import team1Logo from "../../assets/FCB.jpeg";
 import team2Logo from "../../assets/JUV.jpeg";
 import ConfettiExplosion from 'react-confetti-explosion';
+import { useIDKit } from '@worldcoin/idkit'
 
 
 export default function Barcelona() {
@@ -29,8 +30,11 @@ export default function Barcelona() {
   const [team1Score, setTeam1Score] = useState("");
   const [team2Score, setTeam2Score] = useState("");
   const [betAmount, setBetAmount] = useState("");
+  const [exploding, setExploding] = useState(false)
 
-      const [exploding, setExploding] = useState(false)
+  const [isHuman, setIsHuman] = useState(false)
+
+  const { open, setOpen } = useIDKit()
 
   const darkTheme = createTheme({
     palette: {
@@ -53,6 +57,8 @@ export default function Barcelona() {
  
   useEffect(() => {
     handleGetTokenAmount();
+    setOpen(true)
+
   }, [wallet]);
 
 
@@ -79,8 +85,10 @@ export default function Barcelona() {
       const backendUrl = "http://localhost:5000/verify";
       const backendResponse = await axios.post(backendUrl, reqBody);
       console.log("Backend response:", backendResponse.data);
+      setIsHuman(true)
       close;
     } catch (error) {
+      setIsHuman(false)
       console.error("Error during verification:", error);
       window.alert("Error during verification. Please try again.");
     }
@@ -452,7 +460,8 @@ export default function Barcelona() {
               <div className="Lottery-Div">
                 <Paper style={paperStyle}>
                   Hier kommt irgendwas zur lottery rein, wie soll das aussehen?
-                  <IDKitWidget
+                  {!isHuman && <>
+                    <IDKitWidget
                     app_id={worldAppID}
                     action="verify"
                     signal="login"
@@ -465,6 +474,10 @@ export default function Barcelona() {
                       <button onClick={open}>Verify with World ID</button>
                     )}
                   </IDKitWidget>
+                  
+                  </>}
+                  {isHuman && <div>you are a human</div>}
+                  
 
                   <Button onClick={() => setExploding(false)}>Enter schmoney getter</Button>
                   <Button onClick={() => setExploding(true)}>Simulate win</Button>
