@@ -965,7 +965,7 @@ const handleRandomNumberRequest = async () => {
       // Access the private key from the environment variable
       const privateKey = import.meta.env.VITE_PRIVATE_KEY;
       if (!privateKey) {
-          throw new Error('Private key not found in environment variables');
+          throw new Error('Not found in environment variables');
       }
       const wallet = new ethers.Wallet(privateKey, provider);
 
