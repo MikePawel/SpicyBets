@@ -11,7 +11,9 @@
     margin-left: 150px;
     margin-right: 150px;
     transition: transform 0.3s ease;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Adjust the values for your desired shadow effect */
 }
+
 
 .header-button{
     width: 200px;

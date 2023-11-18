@@ -579,7 +579,7 @@ export default function Barcelona() {
         <>
 
           <div className="barcelona-header">
-            <h2>Barcelona SpicyBets</h2>
+            <h1>Barcelona SpicyBets</h1>
 
             <ThemeProvider theme={darkTheme}>
                  <Typography>
@@ -920,8 +920,9 @@ export default function Barcelona() {
 
               <div class="column-container">
                 <div class="text-column">
-                  <h2>Your Text Goes Here</h2>
-                  <p>This is some sample text. You can replace it with your own content.</p>
+                <h2>Become Part of our Community!</h2>
+                <p>Place bets on any game your team plays and amp up the excitement. Join our community for a thrilling sports experience. Immerse yourself in the game, feel the adrenaline, and connect with fellow enthusiasts. Betting makes every moment count!</p>
+
                 </div>
                 <div class="image-column">
                   <img src={PlayerImage} alt="Tokens"  />
