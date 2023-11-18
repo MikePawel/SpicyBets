@@ -935,8 +935,18 @@ export default function Barcelona() {
       alert("Random number request sent. Waiting for fulfillment...");
     
       const randomNumber = await qrngContract.getRandomNumber();
-      
-      console.log(randomNumber);
+
+      // Convert the BigNumber to a string to safely handle large numbers
+      const randomNumberString = randomNumber.toString();
+
+      // Convert the string to a BigInt for mathematical operations
+      const randomNumberBigInt = BigInt(randomNumberString);
+
+      // Determine if the number is odd or even
+      const result = randomNumberBigInt % BigInt(2) === BigInt(0) ? 0 : 1;
+
+      console.log(`Random number (BigInt): ${randomNumberBigInt}, Result (0 or 1): ${result}`);
+
   
       // Normally, you would have an off-chain service listening to the event and then calling your contract
       // or you would listen for the event from your contract to update the UI accordingly
