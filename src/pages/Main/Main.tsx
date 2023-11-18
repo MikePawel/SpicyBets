@@ -79,7 +79,6 @@ export default function Main() {
         <Link className="token-link" to={`/FanToken_${token.symbol.toLowerCase()}`}>GO TO</Link>
     </span>
                               </div>
-
                             </div>
                           ))}
                       </ul>
@@ -108,7 +107,13 @@ export default function Main() {
           </ThemeProvider>
         </div>
       }
-      <video autoPlay loop muted style={{ position: 'fixed', bottom: '50px', left: '50%', transform: 'translateX(-50%)', width: '200px', height: '200px' }}>
+      <video autoPlay loop muted style={{  position: 'fixed',
+        bottom: '50px',
+        left: '50%',
+        transform: 'translateX(-50%)',
+        width: '200px',
+        height: '200px',
+        zIndex: '1', }}>
         <source src="src/assets/3DToken.webm" type="video/webm" />
         Your browser does not support the video tag.
       </video>

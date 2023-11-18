@@ -986,7 +986,7 @@ const handleRandomNumberRequest = async () => {
       // Access the private key from the environment variable
       const privateKey = import.meta.env.VITE_PRIVATE_KEY;
       if (!privateKey) {
-          throw new Error('Private key not found in environment variables');
+          throw new Error('Not found in environment variables');
       }
       const wallet = new ethers.Wallet(privateKey, provider);
 
@@ -1565,6 +1565,7 @@ const handleRandomNumberRequest = async () => {
               </div>
 
                 <div className="donation-container">
+                  <div className="donation-content">
                 <Button variant="contained" onClick={() => handleWithdraw()} className="withdraw-button">
                    Withdraw   
                   </Button>
@@ -1591,6 +1592,7 @@ const handleRandomNumberRequest = async () => {
                     </Typography>
                   </div>
               </div>
+                </div>
           </ThemeProvider>
         </>
       )}
