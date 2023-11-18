@@ -983,6 +983,10 @@ const handleRandomNumberRequest = async () => {
   const onSuccess = async (response: any) => {
     console.log("done");
   };
+
+  const openLinkInNewWindow = () => {
+    window.open('https://spicy-faucet.chiliz.com/', '_blank');
+  };
   
 
   return (
@@ -1006,7 +1010,7 @@ const handleRandomNumberRequest = async () => {
                    tokens
                    <br />
                    <br />
-                   <a href="#" className="header-button">BUY TOKENs</a>
+                   <div onClick={openLinkInNewWindow} className="header-button">BUY TOKENs</div>
                  </Typography>
 
             </ThemeProvider>
