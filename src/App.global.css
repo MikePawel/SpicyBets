@@ -29,8 +29,8 @@ body {
   display: flex;
   height: 100vh;
   /* justify-content: center;
-  align-items: center; */
-  background-image: url('src/assets/backgroundhome.jpg');
+  align-items: center;
+  background-image: url('src/assets/backgroundhome.jpg');*/
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

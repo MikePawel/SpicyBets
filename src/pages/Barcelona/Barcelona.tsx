@@ -28,6 +28,7 @@ import team4Logo from "../../assets/IBFK.png";
 import team5Logo from "../../assets/INTER-2.png";
 import team6Logo from "../../assets/NAP.png";
 import team7Logo from "../../assets/VCF.png";
+import FanTokenGIF from "../../assets/FanToken.gif";
 import ConfettiExplosion from 'react-confetti-explosion';
 import { useIDKit } from '@worldcoin/idkit'
 
@@ -572,9 +573,7 @@ export default function Barcelona() {
       <div style={{ paddingTop: "68px" }}></div>
       {tokenAmount > 0 && (
         <>
-        
-          <div className="wrapper">
-          </div>
+
           <div className="barcelona-header">
             <h2>Barcelona SpicyBets</h2>
 
@@ -908,10 +907,15 @@ export default function Barcelona() {
                 </div>
               </div>
 
-              <div style={{ paddingTop: "50px" }}></div>
-              <div className="Lottery-Div">
-                <Paper style={paperStyle}>
+              <div className="gif-container">
+                <img src={`data:image/gif;base64,${FanTokenGIF}`} alt="FanToken GIF" style={{ width: '200px', height: '200px' }} />
+              </div>
+
+              <div class="lottery-container">
+                <div className="content">
                   Hier kommt irgendwas zur lottery rein, wie soll das aussehen?
+                </div>
+
                   {!isHuman && <>
                     <IDKitWidget
                     app_id={worldAppID}
@@ -933,7 +937,7 @@ export default function Barcelona() {
 
                   <Button onClick={() => setExploding(false)}>Enter schmoney getter</Button>
                   <Button onClick={() => setExploding(true)}>Simulate win</Button>
-                </Paper>
+                </div>
               </div>
 
 
@@ -1019,8 +1023,6 @@ export default function Barcelona() {
                   </div>
                 </Paper>
               </div>
-            </div>
-
           </ThemeProvider>
         </>
       )}
