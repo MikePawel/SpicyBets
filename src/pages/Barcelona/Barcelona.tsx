@@ -907,7 +907,7 @@ export default function Barcelona() {
       alert('Error during withdrawal. Please try again.');
     }
   };
-
+/*
   const handleRandomNumberRequest = async () => {
     if (!window.ethereum) {
       alert("Please install MetaMask");
@@ -955,6 +955,45 @@ export default function Barcelona() {
       alert("Error requesting random number. Please try again.");
     }
   };
+*/
+
+const handleRandomNumberRequest = async () => {
+  try {
+      const providerUrl = 'https://arbitrum-goerli.infura.io/v3/a146daf63d93490995823f0910f50118'; // Replace with your provider
+      const provider = new ethers.providers.JsonRpcProvider(providerUrl);
+
+      // Access the private key from the environment variable
+      const privateKey = import.meta.env.VITE_PRIVATE_KEY;
+      if (!privateKey) {
+          throw new Error('Private key not found in environment variables');
+      }
+      const wallet = new ethers.Wallet(privateKey, provider);
+
+      const qrngContract = new ethers.Contract(
+          randomNumberAddress,
+          randomNumberABI,
+          wallet
+      );
+
+      // Call makeRequestUint256 to request a random number
+      const requestTx = await qrngContract.makeRequestUint256();
+      await requestTx.wait(); // Wait for the transaction to be mined
+
+      console.log(`Random number request sent, transaction hash: ${requestTx.hash}`);
+      alert("Random number request sent. Waiting for fulfillment...");
+
+      const randomNumber = await qrngContract.getRandomNumber();
+
+      const randomNumberString = randomNumber.toString();
+      const randomNumberBigInt = BigInt(randomNumberString);
+      const result = randomNumberBigInt % BigInt(2) === BigInt(0) ? 0 : 1;
+
+      console.log(`Random number (BigInt): ${randomNumberBigInt}, Result (0 or 1): ${result}`);
+  } catch (error) {
+      console.error("Error requesting random number:", error);
+      alert("Error requesting random number. Please try again.");
+  }
+};
 
   const onSuccess = async (response: any) => {
     console.log("done");
