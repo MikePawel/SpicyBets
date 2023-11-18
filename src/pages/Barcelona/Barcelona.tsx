@@ -286,9 +286,351 @@ const erc20ABI = [
     }
   ];
 
+const randomNumberABI = [
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "bytes32",
+				"name": "requestId",
+				"type": "bytes32"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "response",
+				"type": "uint256"
+			}
+		],
+		"name": "ReceivedUint256",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "bytes32",
+				"name": "requestId",
+				"type": "bytes32"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256[]",
+				"name": "response",
+				"type": "uint256[]"
+			}
+		],
+		"name": "ReceivedUint256Array",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "bytes32",
+				"name": "requestId",
+				"type": "bytes32"
+			}
+		],
+		"name": "RequestedUint256",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "bytes32",
+				"name": "requestId",
+				"type": "bytes32"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "size",
+				"type": "uint256"
+			}
+		],
+		"name": "RequestedUint256Array",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "airnode",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "sponsorWallet",
+				"type": "address"
+			}
+		],
+		"name": "WithdrawalRequested",
+		"type": "event"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bytes32",
+				"name": "requestId",
+				"type": "bytes32"
+			},
+			{
+				"internalType": "bytes",
+				"name": "data",
+				"type": "bytes"
+			}
+		],
+		"name": "fulfillUint256",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bytes32",
+				"name": "requestId",
+				"type": "bytes32"
+			},
+			{
+				"internalType": "bytes",
+				"name": "data",
+				"type": "bytes"
+			}
+		],
+		"name": "fulfillUint256Array",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "makeRequestUint256",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "size",
+				"type": "uint256"
+			}
+		],
+		"name": "makeRequestUint256Array",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_airnode",
+				"type": "address"
+			},
+			{
+				"internalType": "bytes32",
+				"name": "_endpointIdUint256",
+				"type": "bytes32"
+			},
+			{
+				"internalType": "bytes32",
+				"name": "_endpointIdUint256Array",
+				"type": "bytes32"
+			},
+			{
+				"internalType": "address",
+				"name": "_sponsorWallet",
+				"type": "address"
+			}
+		],
+		"name": "setRequestParameters",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"stateMutability": "payable",
+		"type": "receive"
+	},
+	{
+		"inputs": [],
+		"name": "withdraw",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_airnodeRrp",
+				"type": "address"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"inputs": [],
+		"name": "_qrngUint256",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "_qrngUint256Array",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "airnode",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "airnodeRrp",
+		"outputs": [
+			{
+				"internalType": "contract IAirnodeRrpV0",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "endpointIdUint256",
+		"outputs": [
+			{
+				"internalType": "bytes32",
+				"name": "",
+				"type": "bytes32"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "endpointIdUint256Array",
+		"outputs": [
+			{
+				"internalType": "bytes32",
+				"name": "",
+				"type": "bytes32"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bytes32",
+				"name": "",
+				"type": "bytes32"
+			}
+		],
+		"name": "expectingRequestWithIdToBeFulfilled",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getRandomNumber",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getRandomNumberArray",
+		"outputs": [
+			{
+				"internalType": "uint256[]",
+				"name": "",
+				"type": "uint256[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "sponsorWallet",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	}
+];
+
+
   const treePlantingTrackerAddress = "0xc214194FA4e72F2d7A57E2e6E98FB186e64D7975";
   const erc20DepositAndSendAddress = '0xe742c9808B2c190921e294E2ABd99c8E365638CE';
   const erc20TokenAddress = '0x63667746A7A005E45B1fffb13a78d0331065Ff7f';
+  const randomNumberAddress = "0x27b82494f321FF605A95Ad6D16BB773EDFDC9195";
 
 export default function Barcelona() {
   const worldAppID = import.meta.env.VITE_WLD_APP_ID;
@@ -302,6 +644,7 @@ export default function Barcelona() {
   const [team2Score, setTeam2Score] = useState("");
   const [betAmount, setBetAmount] = useState("");
   const [exploding, setExploding] = useState(false)
+  const [requestId, setRequestId] = useState(null);
 
   const [isHuman, setIsHuman] = useState(true)
 
@@ -562,6 +905,44 @@ export default function Barcelona() {
     } catch (error) {
       console.error('Error during withdrawal:', error);
       alert('Error during withdrawal. Please try again.');
+    }
+  };
+
+  const handleRandomNumberRequest = async () => {
+    if (!window.ethereum) {
+      alert("Please install MetaMask");
+      return;
+    }
+  
+    try {
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
+      await provider.send("eth_requestAccounts", []); // Request account access
+      const signer = provider.getSigner();
+      const qrngContract = new ethers.Contract(
+        randomNumberAddress,
+        randomNumberABI,
+        signer
+      );
+  
+      // Call makeRequestUint256 to request a random number
+      const requestTx = await qrngContract.makeRequestUint256();
+      await requestTx.wait(); // Wait for the transaction to be mined
+  
+      // After the transaction is confirmed, you can call your getter function
+      // However, you should wait until the Airnode callback has been called.
+      // For simplicity, let's just log the transaction and assume the callback will be handled by the contract's event
+      console.log(`Random number request sent, transaction hash: ${requestTx.hash}`);
+      alert("Random number request sent. Waiting for fulfillment...");
+    
+      const randomNumber = await qrngContract.getRandomNumber();
+      
+      console.log(randomNumber);
+  
+      // Normally, you would have an off-chain service listening to the event and then calling your contract
+      // or you would listen for the event from your contract to update the UI accordingly
+    } catch (error) {
+      console.error("Error requesting random number:", error);
+      alert("Error requesting random number. Please try again.");
     }
   };
 
@@ -1025,6 +1406,9 @@ export default function Barcelona() {
                     >
                       Plant a Tree
                     </Button>
+                    <Button variant="contained" onClick={handleRandomNumberRequest} className="random-number-request-button">
+  Request Random Number
+</Button>
                     <Typography className="trees-planted-text">
                       Trees Planted: {treeCount}
                       <br />
