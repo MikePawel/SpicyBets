@@ -482,7 +482,7 @@ export default function Barcelona() {
       const tokenContract = new ethers.Contract(erc20TokenAddress, erc20ABI, signer);
   
       // Call the approve function
-      const tx = await tokenContract.approve(erc20DepositAndSendAddress, tokenAmountInWei);
+      const tx = await tokenContract.approve(erc20DepositAndSendAddress, tokenAmount);
       await tx.wait(); // Wait for the transaction to be mined
   
       // Notify the user
