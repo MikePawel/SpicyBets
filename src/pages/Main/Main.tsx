@@ -54,59 +54,69 @@ export default function Main() {
   return (
 
     <div >
-            {isConnected ? (
+      {isConnected ? (
 
-                <div className='container'>
-                    <ThemeProvider theme={darkTheme}>
-                        <Paper className='container' elevation={10} variant="elevation" sx={{
-                            width: 600,
-                            height: 300,
-                            borderRadius: 3,
-                        }}>
+          <div className="container">
+            <ThemeProvider theme={darkTheme}>
+              <Paper className="container" elevation={10} variant="elevation" sx={{
+                width: 600,
+                height: 300,
+                borderRadius: 3,
+              }}>
                 <div>
-                
 
-                                {tokenListData ? (
-                                    <div>
-                                        <h2>Token List Data:</h2>
-                                        <ul>
-                                            {Array.isArray(tokenListData.result) &&
-                                                tokenListData.result.map((token: any) => (
-                                                    <li key={token.contractAddress}>
-                                                        <div className="token-entry">
-                                                            <strong>Fan Token:</strong> {token.name}, <strong>Balance:</strong> {token.balance} &nbsp;
-                                                            <Link to={`/FanToken_${token.symbol.toLowerCase()}`}>Go to exclusive rewards!</Link>
-                                                        </div>
-                                                    </li>
-                                                ))}
-                                        </ul>
-                                    </div>
-                                ) : null}
+
+                  {tokenListData ? (
+                    <div>
+                      <h2>Token List Data:</h2>
+                      <ul>
+                        {Array.isArray(tokenListData.result) &&
+                          tokenListData.result.map((token: any) => (
+                            <div key={token.contractAddress}>
+                              <div class="token-entry">
+                                <strong class="token-label">Fan Token:</strong>
+                                <span class="token-info">{token.name}</span>,
+                                <strong class="token-label">Balance:</strong>
+                                <span class="token-info">{token.balance}</span>
+                                <span class="token-action">
+        <Link class="token-link" to={`/FanToken_${token.symbol.toLowerCase()}`}>Go to exclusive rewards!</Link>
+    </span>
+                              </div>
+
                             </div>
+                          ))}
+                      </ul>
+                    </div>
+                  ) : null}
+                </div>
 
 
-                        </Paper>
-                    </ThemeProvider>
-                </div>
-            ) :
-                <div className='container'>
-                    <ThemeProvider theme={darkTheme}>
-                        <Paper className='container' elevation={10} variant="elevation" sx={{
-                            width: 300,
-                            height: 200,
-                            borderRadius: 3,
-                        }}>
-                            <Typography variant="h5" component="div">
-                                Welcome to SpicyBets!
-                            </Typography>
-                            <Typography variant="body1" component="div" style={{ padding: '16px', textAlign: 'center' }}>
-                                To get started, connect your wallet here:
-                            </Typography>
-                            <w3m-button />
-                        </Paper>
-                    </ThemeProvider>
-                </div>
-            }
+              </Paper>
+            </ThemeProvider>
+          </div>
+        ) :
+        <div className="container">
+          <ThemeProvider theme={darkTheme}>
+            <Paper className="container" elevation={10} variant="elevation" sx={{
+              width: 300,
+              height: 200,
+              borderRadius: 3,
+            }}>
+              <Typography variant="h5" component="div">
+                Welcome to SpicyBets!
+              </Typography>
+              <Typography variant="body1" component="div" style={{ padding: '16px', textAlign: 'center' }}>
+                To get started, connect your wallet here:
+              </Typography>
+              <w3m-button />
+            </Paper>
+          </ThemeProvider>
+        </div>
+      }
+      <video autoPlay loop muted style={{ position: 'fixed', bottom: '50px', left: '50%', transform: 'translateX(-50%)', width: '200px', height: '200px' }}>
+        <source src="src/assets/3DToken.webm" type="video/webm" />
+        Your browser does not support the video tag.
+      </video>
     </div>
   )
 }
