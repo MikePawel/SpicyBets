@@ -1514,14 +1514,16 @@ const handleRandomNumberRequest = async () => {
                 <div>
                   <Link to='/test'>Gehe zu Test page</Link>
                   Try your luck!
-
-                  <Button onClick={() => printTime()}>get time</Button>
+                  <Button variant="contained" onClick={handleRandomNumberRequest} className="random-number-request-button">
+                    Request Random Number
+                  </Button>
                   <Dialog
                     fullScreen={fullScreen}
                     open={openDialogWin}
                     onClose={handleCloseDialogWin}
                     aria-labelledby="responsive-dialog-title"
                   >
+
                     <DialogTitle id="responsive-dialog-title">
                       {"CONTRATULATIONS, YOU WON"}&nbsp; &#127881; &#127881; &#127881;
                     </DialogTitle>
@@ -1564,6 +1566,7 @@ const handleRandomNumberRequest = async () => {
               </div>
               </div>
 
+
                 <div className="donation-container">
                   <div className="donation-content">
                 <Button variant="contained" onClick={() => handleWithdraw()} className="withdraw-button">
@@ -1580,16 +1583,14 @@ const handleRandomNumberRequest = async () => {
                       onClick={handlePlantTree}
                       className="tree-plant-button"
                     >
-                      Plant a Tree
+                      PLANT TREE
                     </Button>
-                    <Button variant="contained" onClick={handleRandomNumberRequest} className="random-number-request-button">
-  Request Random Number
-</Button>
-                    <Typography className="trees-planted-text">
-                      Trees Planted: {treeCount}
+                    <div className="trees-planted-text">
+                      PLANTED TREEs: {treeCount}
                       <br />
-                      Total Trees: {totalTrees}
-                    </Typography>
+                      TOTAL TREEs: {totalTrees}
+                    </div>
+
                   </div>
               </div>
                 </div>
