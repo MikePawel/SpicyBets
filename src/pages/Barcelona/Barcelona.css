@@ -239,7 +239,7 @@
     margin-right: 150px;
     height: 350px;
     align-items: center;
-
+    justify-content: space-evenly;
 }
 
 .lottery-text-column{
