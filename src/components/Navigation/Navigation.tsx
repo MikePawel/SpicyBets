@@ -11,7 +11,7 @@ export const Navigation = () => {
   return (
     <div className={styles.navigation}>
       <div className={styles.flexContainer}>
-        <div className={styles.leftNav}>Spicy</div>
+        <div className={styles.leftNav}>SpicyBets</div>
         <div className={styles.rightNav}>
           <w3m-button />
         </div>
