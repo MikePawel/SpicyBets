@@ -1026,16 +1026,41 @@ const handleRandomNumberRequest = async () => {
             </ThemeProvider>
           </div>
 
-          <div class="column-container">
-                <div class="text-column">
+          <div className="column-container">
+                <div className="text-column">
                 <h2>Become Part of our Community!</h2>
                 <p>Place bets on any game your team plays and amp up the excitement. Join our community for a thrilling sports experience. Immerse yourself in the game, feel the adrenaline, and connect with fellow enthusiasts. Betting makes every moment count!</p>
 
                 </div>
-                <div class="image-column">
+                <div className="image-column">
                   <img src={PlayerImage} alt="Tokens"  />
                 </div>
               </div>
+
+
+          <div className="bet-swipe-container">
+            <h1>Icon Descriptions TBD</h1>
+            <ThemeProvider theme={darkTheme}>
+              <Typography>
+                <div className="team-swipe-container">
+                  <img
+                    src={team1Logo}
+                    alt="Team 1 Logo"
+                    className="FCB"
+                  />
+                  <span className="centered-colon">:</span>
+                  <img
+                    src={team2Logo}
+                    alt="Team 2 Logo"
+                    className="TeamBet"
+                  />
+                </div>
+              </Typography>
+
+            </ThemeProvider>
+          </div>
+
+
 
           <ThemeProvider theme={darkTheme}>
             <div className="center-container">
@@ -1367,26 +1392,54 @@ const handleRandomNumberRequest = async () => {
 
             
 
-              <div class="lottery-container">
-                <div class="lottery-text-column">
-                  FLIP A COIN TO WIN
+              <div className="lottery-container">
+
+                <div style={{display: 'flex', flexDirection: 'column'}}>
+                  
+                <div className="lottery-text-column">
+                  FLIP A COIN DOUBLE YOUR MONEY
                 </div>
 
-                <div class="lottery-image-column">
+                <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-evenly', alignItems: 'baseline', paddingTop: '40px'}}>
+                  
+                <div className="bet-amount-container">
+                      <input
+                        type="number"
+                        placeholder="Bet Amount"
+                        min="0"
+                        value={betAmount}
+                        onChange={(e) => setBetAmount(e.target.value)}
+                        className="bet-amount-input"
+                      />
+                    </div>
+
+                    <div
+                      variant="contained"
+                      onClick={submitBet}
+                      className="submit-bet-button"
+                    >
+                      SUBMIT
+                    </div>
+
+                </div>
+
+                </div>
+
+                
+
+                <div className="lottery-image-column">
                   <div className="gif-container">
-                    <img src={FanTokenGIF} alt="FanToken GIF" style={{ width: '200px', height: '200px' }} />
+                    <img src={FanTokenGIF} alt="FanToken GIF" style={{ width: '400px', height: '400px' }} />
                   </div>
                 </div>
                 </div>
               </div>
 
 
-              <div style={{ paddingTop: "50px" }}></div>
-              <div className="Lottery-Div">
-                <Paper style={paperStyle}>
+
+              <div className="lottery-container">
+                <div>
                   Try your luck!
-
-
                   <Dialog
                     fullScreen={fullScreen}
                     open={openDialogWin}
@@ -1432,13 +1485,10 @@ const handleRandomNumberRequest = async () => {
                     </DialogActions>
                   </Dialog>
                   <Button onClick={() => handleClickOpenDialogLoose()}>Loose Dialog</Button>
-                </Paper>
+              </div>
               </div>
 
-              <div style={{ paddingTop: "50px" }}></div>
-
-              <div className="Donation-Div">
-                <Paper style={paperStyle}>
+                <div className="donation-container">
                 <Button variant="contained" onClick={() => handleWithdraw()} className="withdraw-button">
                    Withdraw   
                   </Button>
@@ -1464,13 +1514,10 @@ const handleRandomNumberRequest = async () => {
                       Total Trees: {totalTrees}
                     </Typography>
                   </div>
-                </Paper>
               </div>
           </ThemeProvider>
         </>
       )}
-      
-      
       
 
       {tokenAmount == 0 && (
