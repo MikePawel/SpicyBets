@@ -63,6 +63,15 @@
     margin-right: 150px;
 }
 
+.container {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
 .bettingCard {
     display: flex;
     flex-direction: column;
