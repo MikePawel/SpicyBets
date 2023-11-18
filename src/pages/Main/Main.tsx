@@ -56,30 +56,27 @@ export default function Main() {
     <div >
       {isConnected ? (
 
-          <div className="container">
+          <div className="token-container">
             <ThemeProvider theme={darkTheme}>
-              <Paper className="container" elevation={10} variant="elevation" sx={{
+              <div className="container" elevation={10} variant="elevation" sx={{
                 width: 600,
                 height: 300,
                 borderRadius: 3,
               }}>
                 <div>
-
-
                   {tokenListData ? (
                     <div>
-                      <h2>Token List Data:</h2>
-                      <ul>
+                      <ul style={{ listStyle: 'none', padding: 0 }}>
                         {Array.isArray(tokenListData.result) &&
                           tokenListData.result.map((token: any) => (
                             <div key={token.contractAddress}>
                               <div class="token-entry">
-                                <strong class="token-label">Fan Token:</strong>
+                                <strong class="token-label"></strong>
                                 <span class="token-info">{token.name}</span>,
                                 <strong class="token-label">Balance:</strong>
                                 <span class="token-info">{token.balance}</span>
                                 <span class="token-action">
-        <Link class="token-link" to={`/FanToken_${token.symbol.toLowerCase()}`}>Go to exclusive rewards!</Link>
+        <Link class="token-link" to={`/FanToken_${token.symbol.toLowerCase()}`}>GO TO</Link>
     </span>
                               </div>
 
@@ -89,9 +86,7 @@ export default function Main() {
                     </div>
                   ) : null}
                 </div>
-
-
-              </Paper>
+              </div>
             </ThemeProvider>
           </div>
         ) :

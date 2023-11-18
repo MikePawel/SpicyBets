@@ -1,30 +1,6 @@
-/* body {
-    margin: 0;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-image: url('src/assets/backgroundhome.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-} */
 
 
-
-/* ._navigation_zuh24_1 {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    padding: 15px;
-
-} */
-
-/* ._flexContainer_zuh24_10{
-    padding-right: 45px
-} */
-
-.container {
+.token-container{
     width: 70%;
     height: 60%;
     margin: auto;
@@ -51,6 +27,8 @@
         height: auto;
         top: 5%;
         bottom: 5%;
+        flex-direction: column;
+        align-items: center;
     }
 }
 
@@ -67,9 +45,12 @@
     height: 100vh; /* Adjust the height as needed */
 }
 
+
 .token-entry {
     border: 1px solid #ea385a;
     padding: 20px;
+    margin: 5px;
+    color: whitesmoke;
     border-radius: 10px;
     text-align: center;
     box-shadow: 0 0 10px rgba(0, 123, 255, 0.1);
