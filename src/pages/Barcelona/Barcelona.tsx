@@ -645,6 +645,7 @@ export default function Barcelona() {
   const [betAmount, setBetAmount] = useState("");
   const [exploding, setExploding] = useState(false)
   const [requestId, setRequestId] = useState(null);
+  const [currTime, setCurrTime] = useState("")
 
   const [isHuman, setIsHuman] = useState(true)
 
@@ -653,6 +654,8 @@ export default function Barcelona() {
   const [openDialogWin, setOpenDialogWin] = React.useState(false);
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
+
+  const [bet1, setBet1] = useState(false)
 
   const handleClickOpenDialogWin = () => {
     setExploding(true)
@@ -687,6 +690,8 @@ export default function Barcelona() {
     padding: "16px",
     margin: "8px",
   };
+
+  
 
   const handleGetTokenAmount = async () => {
     let tempAmount = await checkFanTokenAmount("testBAR", wallet.accounts[0]);
@@ -732,6 +737,7 @@ export default function Barcelona() {
   useEffect(() => {
     handleGetTokenAmount();
     setOpen(true)
+    timeInSeconds()
 
   }, [wallet]);
 
@@ -785,15 +791,27 @@ export default function Barcelona() {
     setNumberOfTrees((prevCount) => Math.max(prevCount - 1, 1));
   };
 
+
+  function timeInSeconds(){
+    var currentDate = new Date();
+    console.log(currentDate)
+    var timestamp = currentDate.getTime();
+    var timestampInSeconds = Math.floor(timestamp / 1000);
+    console.log(String(timestampInSeconds).slice(0, -1))
+    setCurrTime(String(timestampInSeconds))
+  }
+
   const isSuccess = async (response: any) => {
     try {
+      timeInSeconds()
       const reqBody = {
         merkle_root: response.merkle_root,
         nullifier_hash: response.nullifier_hash,
         proof: response.proof,
         credential_type: response.credential_type,
         action: "verify",
-        signal: "login",
+        // signal: 'time',
+        signal: currTime,
       };
 
       // Send the reqBody to the backend
@@ -842,6 +860,8 @@ export default function Barcelona() {
   
 
   const submitBet = async () => {
+
+    setBet1(true)
     if (!window.ethereum) {
       alert('Please install MetaMask');
       return;
@@ -959,6 +979,7 @@ export default function Barcelona() {
 
 const handleRandomNumberRequest = async () => {
   try {
+    
       const providerUrl = 'https://arbitrum-goerli.infura.io/v3/a146daf63d93490995823f0910f50118'; // Replace with your provider
       const provider = new ethers.providers.JsonRpcProvider(providerUrl);
 
@@ -980,7 +1001,7 @@ const handleRandomNumberRequest = async () => {
       await requestTx.wait(); // Wait for the transaction to be mined
 
       console.log(`Random number request sent, transaction hash: ${requestTx.hash}`);
-      alert("Random number request sent. Waiting for fulfillment...");
+      // alert("Random number request sent. Waiting for fulfillment...");
 
       const randomNumber = await qrngContract.getRandomNumber();
 
@@ -989,6 +1010,13 @@ const handleRandomNumberRequest = async () => {
       const result = randomNumberBigInt % BigInt(2) === BigInt(0) ? 0 : 1;
 
       console.log(`Random number (BigInt): ${randomNumberBigInt}, Result (0 or 1): ${result}`);
+      if(result== 1){
+        console.log("WIN")
+        handleClickOpenDialogWin()
+      }else{
+        console.log("LOOSE")
+        handleClickOpenDialogLoose()
+      }
   } catch (error) {
       console.error("Error requesting random number:", error);
       alert("Error requesting random number. Please try again.");
@@ -998,6 +1026,7 @@ const handleRandomNumberRequest = async () => {
   const onSuccess = async (response: any) => {
     console.log("done");
   };
+  
 
   return (
     <>
@@ -1066,7 +1095,10 @@ const handleRandomNumberRequest = async () => {
             <div className="center-container">
               <div className="bet-container-row">
                 <div className="bet-container">
-                  <div className="bettingCard">
+
+                  {!bet1 && 
+
+                    <div className="bettingCard">
                     <div className="team-logos-container">
                       <img
                         src={team1Logo}
@@ -1075,30 +1107,13 @@ const handleRandomNumberRequest = async () => {
                       />
                       <span className="centered-colon">:</span>
                       <img
-                        src={team2Logo}
-                        alt="Team 2 Logo"
+                        src={team3Logo}
+                        alt="Team 3 Logo"
                         className="team-logo"
                       />
                     </div>
 
-                    <div className="score-prediction-container">
-                      <input
-                        type="number"
-                        placeholder="0"
-                        min="0"
-                        value={team1Score}
-                        onChange={(e) => setTeam1Score(e.target.value)}
-                        className="score-input"
-                      />
-                      <input
-                        type="number"
-                        placeholder="0"
-                        min="0"
-                        value={team2Score}
-                        onChange={(e) => setTeam2Score(e.target.value)}
-                        className="score-input"
-                      />
-                    </div>
+
                     <div className="bet-amount-container">
                       <input
                         type="number"
@@ -1118,224 +1133,32 @@ const handleRandomNumberRequest = async () => {
                       onClick={submitBet}
                       className="submit-bet-button"
                     >
-                      SUBMIT
+                      WIN
                     </div>
                     </Tooltip>
-                    </div>
-
-                  </div>
-
-                  <div className="bettingCard">
-                    <div className="team-logos-container">
-                      <img
-                        src={team1Logo}
-                        alt="Team 1 Logo"
-                        className="team-logo"
-                      />
-                      <span className="centered-colon">:</span>
-                      <img
-                        src={team3Logo}
-                        alt="Team 3 Logo"
-                        className="team-logo"
-                      />
-                    </div>
-
-                    <div className="score-prediction-container">
-                      <input
-                        type="number"
-                        placeholder="0"
-                        min="0"
-                        value={team1Score}
-                        onChange={(e) => setTeam1Score(e.target.value)}
-                        className="score-input"
-                      />
-                      <input
-                        type="number"
-                        placeholder="0"
-                        min="0"
-                        value={team2Score}
-                        onChange={(e) => setTeam2Score(e.target.value)}
-                        className="score-input"
-                      />
-                    </div>
-                    <div className="bet-amount-container">
-                      <input
-                        type="number"
-                        placeholder="Bet Amount"
-                        min="0"
-                        value={betAmount}
-                        onChange={(e) => setBetAmount(e.target.value)}
-                        className="bet-amount-input"
-                      />
-                    </div>
-                    <Tooltip title="The Odds of Barcelona winning are 67%" arrow>
+                    <Tooltip title="The Odds of Barcelona winning are 85%" arrow>
                     <div
                       variant="contained"
                       onClick={submitBet}
                       className="submit-bet-button"
                     >
-                      SUBMIT
+                      EVEN
+                    </div>
+                    </Tooltip>
+                    <Tooltip title="The Odds of Barcelona winning are 85%" arrow>
+                    <div
+                      variant="contained"
+                      onClick={submitBet}
+                      className="submit-bet-button"
+                    >
+                      LOSE
                     </div>
                     </Tooltip>
 
-                  </div>
-
-                  <div className="bettingCard">
-                    <div className="team-logos-container">
-                      <img
-                        src={team1Logo}
-                        alt="Team 1 Logo"
-                        className="team-logo"
-                      />
-                      <span className="centered-colon">:</span>
-                      <img
-                        src={team4Logo}
-                        alt="Team 4 Logo"
-                        className="team-logo"
-                      />
                     </div>
 
-                    <div className="score-prediction-container">
-                      <input
-                        type="number"
-                        placeholder="0"
-                        min="0"
-                        value={team1Score}
-                        onChange={(e) => setTeam1Score(e.target.value)}
-                        className="score-input"
-                      />
-                      <input
-                        type="number"
-                        placeholder="0"
-                        min="0"
-                        value={team2Score}
-                        onChange={(e) => setTeam2Score(e.target.value)}
-                        className="score-input"
-                      />
                     </div>
-                    <div className="bet-amount-container">
-                      <input
-                        type="number"
-                        placeholder="Bet Amount"
-                        min="0"
-                        value={betAmount}
-                        onChange={(e) => setBetAmount(e.target.value)}
-                        className="bet-amount-input"
-                      />
-                    </div>
-                    <div
-                      variant="contained"
-                      onClick={submitBet}
-                      className="submit-bet-button"
-                    >
-                      SUBMIT
-                    </div>
-
-                  </div>
-                  <div className="bettingCard">
-                    <div className="team-logos-container">
-                      <img
-                        src={team1Logo}
-                        alt="Team 1 Logo"
-                        className="team-logo"
-                      />
-                      <span className="centered-colon">:</span>
-                      <img
-                        src={team5Logo}
-                        alt="Team 5 Logo"
-                        className="team-logo"
-                      />
-                    </div>
-
-                    <div className="score-prediction-container">
-                      <input
-                        type="number"
-                        placeholder="0"
-                        min="0"
-                        value={team1Score}
-                        onChange={(e) => setTeam1Score(e.target.value)}
-                        className="score-input"
-                      />
-                      <input
-                        type="number"
-                        placeholder="0"
-                        min="0"
-                        value={team2Score}
-                        onChange={(e) => setTeam2Score(e.target.value)}
-                        className="score-input"
-                      />
-                    </div>
-                    <div className="bet-amount-container">
-                      <input
-                        type="number"
-                        placeholder="Bet Amount"
-                        min="0"
-                        value={betAmount}
-                        onChange={(e) => setBetAmount(e.target.value)}
-                        className="bet-amount-input"
-                      />
-                    </div>
-                    <div
-                      variant="contained"
-                      onClick={submitBet}
-                      className="submit-bet-button"
-                    >
-                      SUBMIT
-                    </div>
-
-                  </div>
-                  <div className="bettingCard">
-                    <div className="team-logos-container">
-                      <img
-                        src={team1Logo}
-                        alt="Team 1 Logo"
-                        className="team-logo"
-                      />
-                      <span className="centered-colon">:</span>
-                      <img
-                        src={team6Logo}
-                        alt="Team 6 Logo"
-                        className="team-logo"
-                      />
-                    </div>
-
-                    <div className="score-prediction-container">
-                      <input
-                        type="number"
-                        placeholder="0"
-                        min="0"
-                        value={team1Score}
-                        onChange={(e) => setTeam1Score(e.target.value)}
-                        className="score-input"
-                      />
-                      <input
-                        type="number"
-                        placeholder="0"
-                        min="0"
-                        value={team2Score}
-                        onChange={(e) => setTeam2Score(e.target.value)}
-                        className="score-input"
-                      />
-                    </div>
-                    <div className="bet-amount-container">
-                      <input
-                        type="number"
-                        placeholder="Bet Amount"
-                        min="0"
-                        value={betAmount}
-                        onChange={(e) => setBetAmount(e.target.value)}
-                        className="bet-amount-input"
-                      />
-                    </div>
-                    <div
-                      variant="contained"
-                      onClick={submitBet}
-                      className="submit-bet-button"
-                    >
-                      SUBMIT
-                    </div>
-
-                  </div>
+                  }
                   <div className="bettingCard">
                     <div className="team-logos-container">
                       <img
@@ -1351,24 +1174,7 @@ const handleRandomNumberRequest = async () => {
                       />
                     </div>
 
-                    <div className="score-prediction-container">
-                      <input
-                        type="number"
-                        placeholder="0"
-                        min="0"
-                        value={team1Score}
-                        onChange={(e) => setTeam1Score(e.target.value)}
-                        className="score-input"
-                      />
-                      <input
-                        type="number"
-                        placeholder="0"
-                        min="0"
-                        value={team2Score}
-                        onChange={(e) => setTeam2Score(e.target.value)}
-                        className="score-input"
-                      />
-                    </div>
+
                     <div className="bet-amount-container">
                       <input
                         type="number"
@@ -1379,14 +1185,281 @@ const handleRandomNumberRequest = async () => {
                         className="bet-amount-input"
                       />
                     </div>
+
+                    <div style={{display:'flex'}}>
+
+                    <Tooltip title="The Odds of Barcelona winning are 85%" arrow>
                     <div
                       variant="contained"
                       onClick={submitBet}
                       className="submit-bet-button"
                     >
-                      SUBMIT
+                      WIN
                     </div>
-                  </div>
+                    </Tooltip>
+                    <Tooltip title="The Odds of Barcelona winning are 85%" arrow>
+                    <div
+                      variant="contained"
+                      onClick={submitBet}
+                      className="submit-bet-button"
+                    >
+                      EVEN
+                    </div>
+                    </Tooltip>
+                    <Tooltip title="The Odds of Barcelona winning are 85%" arrow>
+                    <div
+                      variant="contained"
+                      onClick={submitBet}
+                      className="submit-bet-button"
+                    >
+                      LOSE
+                    </div>
+                    </Tooltip>
+
+                    </div>
+
+                    </div>
+                    <div className="bettingCard">
+                    <div className="team-logos-container">
+                      <img
+                        src={team1Logo}
+                        alt="Team 1 Logo"
+                        className="team-logo"
+                      />
+                      <span className="centered-colon">:</span>
+                      <img
+                        src={team2Logo}
+                        alt="Team 2 Logo"
+                        className="team-logo"
+                      />
+                    </div>
+
+
+                    <div className="bet-amount-container">
+                      <input
+                        type="number"
+                        placeholder="Bet Amount"
+                        min="0"
+                        value={betAmount}
+                        onChange={(e) => setBetAmount(e.target.value)}
+                        className="bet-amount-input"
+                      />
+                    </div>
+
+                    <div style={{display:'flex'}}>
+
+                    <Tooltip title="The Odds of Barcelona winning are 85%" arrow>
+                    <div
+                      variant="contained"
+                      onClick={submitBet}
+                      className="submit-bet-button"
+                    >
+                      WIN
+                    </div>
+                    </Tooltip>
+                    <Tooltip title="The Odds of Barcelona winning are 85%" arrow>
+                    <div
+                      variant="contained"
+                      onClick={submitBet}
+                      className="submit-bet-button"
+                    >
+                      EVEN
+                    </div>
+                    </Tooltip>
+                    <Tooltip title="The Odds of Barcelona winning are 85%" arrow>
+                    <div
+                      variant="contained"
+                      onClick={submitBet}
+                      className="submit-bet-button"
+                    >
+                      LOSE
+                    </div>
+                    </Tooltip>
+
+                    </div>
+
+                    </div>
+                    <div className="bettingCard">
+                    <div className="team-logos-container">
+                      <img
+                        src={team1Logo}
+                        alt="Team 1 Logo"
+                        className="team-logo"
+                      />
+                      <span className="centered-colon">:</span>
+                      <img
+                        src={team4Logo}
+                        alt="Team 4 Logo"
+                        className="team-logo"
+                      />
+                    </div>
+
+
+                    <div className="bet-amount-container">
+                      <input
+                        type="number"
+                        placeholder="Bet Amount"
+                        min="0"
+                        value={betAmount}
+                        onChange={(e) => setBetAmount(e.target.value)}
+                        className="bet-amount-input"
+                      />
+                    </div>
+
+                    <div style={{display:'flex'}}>
+
+                    <Tooltip title="The Odds of Barcelona winning are 85%" arrow>
+                    <div
+                      variant="contained"
+                      onClick={submitBet}
+                      className="submit-bet-button"
+                    >
+                      WIN
+                    </div>
+                    </Tooltip>
+                    <Tooltip title="The Odds of Barcelona winning are 85%" arrow>
+                    <div
+                      variant="contained"
+                      onClick={submitBet}
+                      className="submit-bet-button"
+                    >
+                      EVEN
+                    </div>
+                    </Tooltip>
+                    <Tooltip title="The Odds of Barcelona winning are 85%" arrow>
+                    <div
+                      variant="contained"
+                      onClick={submitBet}
+                      className="submit-bet-button"
+                    >
+                      LOSE
+                    </div>
+                    </Tooltip>
+
+                    </div>
+
+                    </div>
+                    <div className="bettingCard">
+                    <div className="team-logos-container">
+                      <img
+                        src={team1Logo}
+                        alt="Team 1 Logo"
+                        className="team-logo"
+                      />
+                      <span className="centered-colon">:</span>
+                      <img
+                        src={team5Logo}
+                        alt="Team 5 Logo"
+                        className="team-logo"
+                      />
+                    </div>
+
+
+                    <div className="bet-amount-container">
+                      <input
+                        type="number"
+                        placeholder="Bet Amount"
+                        min="0"
+                        value={betAmount}
+                        onChange={(e) => setBetAmount(e.target.value)}
+                        className="bet-amount-input"
+                      />
+                    </div>
+
+                    <div style={{display:'flex'}}>
+
+                    <Tooltip title="The Odds of Barcelona winning are 85%" arrow>
+                    <div
+                      variant="contained"
+                      onClick={submitBet}
+                      className="submit-bet-button"
+                    >
+                      WIN
+                    </div>
+                    </Tooltip>
+                    <Tooltip title="The Odds of Barcelona winning are 85%" arrow>
+                    <div
+                      variant="contained"
+                      onClick={submitBet}
+                      className="submit-bet-button"
+                    >
+                      EVEN
+                    </div>
+                    </Tooltip>
+                    <Tooltip title="The Odds of Barcelona winning are 85%" arrow>
+                    <div
+                      variant="contained"
+                      onClick={submitBet}
+                      className="submit-bet-button"
+                    >
+                      LOSE
+                    </div>
+                    </Tooltip>
+
+                    </div>
+
+                    </div>
+                    <div className="bettingCard">
+                    <div className="team-logos-container">
+                      <img
+                        src={team1Logo}
+                        alt="Team 1 Logo"
+                        className="team-logo"
+                      />
+                      <span className="centered-colon">:</span>
+                      <img
+                        src={team6Logo}
+                        alt="Team 6 Logo"
+                        className="team-logo"
+                      />
+                    </div>
+
+
+                    <div className="bet-amount-container">
+                      <input
+                        type="number"
+                        placeholder="Bet Amount"
+                        min="0"
+                        value={betAmount}
+                        onChange={(e) => setBetAmount(e.target.value)}
+                        className="bet-amount-input"
+                      />
+                    </div>
+
+                    <div style={{display:'flex'}}>
+
+                    <Tooltip title="The Odds of Barcelona winning are 85%" arrow>
+                    <div
+                      variant="contained"
+                      onClick={submitBet}
+                      className="submit-bet-button"
+                    >
+                      WIN
+                    </div>
+                    </Tooltip>
+                    <Tooltip title="The Odds of Barcelona winning are 85%" arrow>
+                    <div
+                      variant="contained"
+                      onClick={submitBet}
+                      className="submit-bet-button"
+                    >
+                      EVEN
+                    </div>
+                    </Tooltip>
+                    <Tooltip title="The Odds of Barcelona winning are 85%" arrow>
+                    <div
+                      variant="contained"
+                      onClick={submitBet}
+                      className="submit-bet-button"
+                    >
+                      LOSE
+                    </div>
+                    </Tooltip>
+
+                    </div>
+
+                    </div>
+                
                 </div>
               </div>
 
@@ -1415,10 +1488,10 @@ const handleRandomNumberRequest = async () => {
 
                     <div
                       variant="contained"
-                      onClick={submitBet}
+                      onClick={handleRandomNumberRequest}
                       className="submit-bet-button"
                     >
-                      SUBMIT
+                      FLIP
                     </div>
 
                 </div>
@@ -1439,7 +1512,10 @@ const handleRandomNumberRequest = async () => {
 
               <div className="lottery-container">
                 <div>
+                  <Link to='/test'>Gehe zu Test page</Link>
                   Try your luck!
+
+                  <Button onClick={() => printTime()}>get time</Button>
                   <Dialog
                     fullScreen={fullScreen}
                     open={openDialogWin}
@@ -1565,7 +1641,8 @@ const handleRandomNumberRequest = async () => {
                 <IDKitWidget
                     app_id={worldAppID}
                     action="verify"
-                    signal="login"
+                    // signal='time'
+                    signal={currTime}
                     handleVerify={isSuccess}
                     onSuccess={onSuccess}
                     credential_types={["orb"]}

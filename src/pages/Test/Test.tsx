@@ -1,16 +1,12 @@
 import React from 'react'
-import "./Test.css"
-import { Link } from "react-router-dom"
 
-export default function Test() {
-    return (
-        <>
-            <div className='test'>
+export default function 
 
-                Test
+() {
+  return (
+    <div style={{padding: '100px'}}>
 
-                <Link to="/"> Go Home </Link>
-            </div>
-        </>
-    )
+        <button onClick={() => console.log("hi")}>print hi</button>
+    </div>
+  )
 }

@@ -12,6 +12,7 @@ export const formatAddress = (addr: string) => {
   return `${addr.substring(0, 4)}...${addr.substring(38, 42)}`
 }
 
+
 const fetchData = async (url: string, fanToken: string) => {
   try {
     const response = await fetch(url);

@@ -162,6 +162,7 @@
 .score-prediction-container,
 .bet-amount-container {
     margin-bottom: 10px;
+    padding-top: 30px;
 }
 
 .centered-colon {

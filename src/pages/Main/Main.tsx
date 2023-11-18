@@ -58,7 +58,7 @@ export default function Main() {
 
           <div className="token-container">
             <ThemeProvider theme={darkTheme}>
-              <div className="token-list" elevation={10} variant="elevation" sx={{
+              <div className="token-list" variant="elevation" sx={{
                 width: 600,
                 height: 300,
                 borderRadius: 3,
@@ -70,13 +70,13 @@ export default function Main() {
                         {Array.isArray(tokenListData.result) &&
                           tokenListData.result.map((token: any) => (
                             <div key={token.contractAddress}>
-                              <div class="token-entry">
-                                <strong class="token-label"></strong>
-                                <span class="token-info">{token.name}</span>,
-                                <strong class="token-label">Balance:</strong>
-                                <span class="token-info">{token.balance}</span>
-                                <span class="token-action">
-        <Link class="token-link" to={`/FanToken_${token.symbol.toLowerCase()}`}>GO TO</Link>
+                              <div className="token-entry">
+                                <strong className="token-label"></strong>
+                                <span className="token-info">{token.name}</span>,
+                                <strong className="token-label">Balance:</strong>
+                                <span className="token-info">{token.balance}</span>
+                                <span className="token-action">
+        <Link className="token-link" to={`/FanToken_${token.symbol.toLowerCase()}`}>GO TO</Link>
     </span>
                               </div>
 

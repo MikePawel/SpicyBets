@@ -18,7 +18,17 @@ app.use(bodyParser.json());
 // Endpoint to handle the verification request
 app.post('/verify', async (req, res) => {
   try {
+
     const reqBody = req.body;
+    console.log(reqBody.signal)
+    var currentDate = new Date();
+    var timestamp = currentDate.getTime();
+    var timestampInSeconds = Math.floor(timestamp / 1000);
+    console.log(timestampInSeconds)
+
+    if(reqBody.signal < timestampInSeconds-300 && reqBody.signal < timestampInSeconds){
+      throw new Error('The signal is onlder than 5 minutes')
+    }
     // console.log('Received verification request:', reqBody);
 
     // Send the verification request to the World ID API
