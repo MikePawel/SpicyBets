@@ -1,7 +1,7 @@
 
 .barcelona-header {
     padding: 20px;
-    background-image: url('src/assets/barcaHeader.jpg'); /* Update the path to your image */
+    background-image: url('src/assets/barcaHeader.jpg');
     background-size: cover;
     background-position: center;
     border-radius: 25px;
@@ -218,17 +218,17 @@
 }
 
 .tree-counter button {
-    background-color: #4CAF50; /* Green background */
+    background-color: #b62b44;
     border: none;
     color: white;
-    padding: 8px 16px; /* Smaller padding */
+    padding: 8px 16px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
-    border-radius: 4px; /* Rounded corners */
+    border-radius: 4px;
 }
 
 .tree-counter span {
@@ -254,7 +254,7 @@
 .lottery-container {
     display: flex;
     padding: 20px;
-    background-color: rgb(234, 56, 90, 0.8);
+    background-color: rgb(234, 56, 90);
     border-radius: 25px;
     text-align: center;
     color: #ffffff;
@@ -289,7 +289,7 @@
 
 
 .odds-button {
-    text-decoration: none;
+  text-decoration: none;
   display: block;
   color: #ececec;
   background-color: #ea385a;
@@ -321,7 +321,7 @@
 }
 
 .donation-container {
-    background-image: url('src/assets/trees.jpg'); /* Update the path to your image */
+    background-image: url('src/assets/nounifyforest.png');
     background-size: cover;
     background-position: center;
     border-radius: 25px;
@@ -334,18 +334,51 @@
     align-items: center;
     justify-content: space-evenly;
     backdrop-filter: blur(5px);
+    box-shadow: 0 0 10px rgb(234, 56, 90);
 }
 
 .donation-content{
-    width: 200px;
+    background-color: rgba(117, 214, 85, 0.44);
+    width: 250px;
     text-decoration: none;
     display: inline-block;
     color: #ececec;
     padding: 10px 20px;
-    margin-top: 25px;
+    margin-top: 45px;
     border-radius: 5px;
     font-weight: bold;
     transition: background-color 0.3s ease;
     box-shadow: 0 0 10px rgba(0, 123, 255, 0.1);
+}
+
+.tree-counter {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    color: #c92c50;
+}
+
+.tree-counter Button {
+    margin: 0 8px;
+    font-size: 1.2em;
+}
+
+.tree-plant-button {
+    background-color: #ea385a; /* Green */
+    color: #fff;
+    margin-bottom: 15px;
+    transition: background-color 0.3s ease;
+}
+
+.tree-plant-button:hover {
+    background-color: #b62b44; /* Darker green on hover */
+}
+
+.trees-planted-text {
+    background-color: #c92c50;
+    border-radius: 5px;
+    height: 60px;
+    width: 100%;
+    padding-top: 10px;
 }
 

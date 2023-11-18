@@ -58,11 +58,7 @@ export default function Main() {
 
           <div className="token-container">
             <ThemeProvider theme={darkTheme}>
-              <div className="token-list" elevation={10} variant="elevation" sx={{
-                width: 600,
-                height: 300,
-                borderRadius: 3,
-              }}>
+              <div className="token-list" elevation={10} variant="elevation" sx={{}}>
                 <div>
                   {tokenListData ? (
                     <div>
@@ -72,9 +68,9 @@ export default function Main() {
                             <div key={token.contractAddress}>
                               <div class="token-entry">
                                 <strong class="token-label"></strong>
-                                <span class="token-info">{token.name}</span>
+
                                 <span class="token-action">
-        <Link class="token-link" to={`/FanToken_${token.symbol.toLowerCase()}`}>GO TO</Link>
+        <Link class="token-link" to={`/FanToken_${token.symbol.toLowerCase()}`}>{token.name}</Link>
     </span>
                               </div>
                             </div>
