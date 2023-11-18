@@ -21,8 +21,13 @@ import { Link } from "react-router-dom";
 import { IDKitWidget } from "@worldcoin/idkit";
 import axios from "axios";
 import { ethers } from "ethers";
-import team1Logo from "../../assets/FCB.jpeg";
-import team2Logo from "../../assets/JUV.jpeg";
+import team1Logo from "../../assets/FCB.png";
+import team2Logo from "../../assets/AM.png";
+import team3Logo from "../../assets/GAL.png";
+import team4Logo from "../../assets/IBFK.png";
+import team5Logo from "../../assets/INTER-2.png";
+import team6Logo from "../../assets/NAP.png";
+import team7Logo from "../../assets/VCF.png";
 import ConfettiExplosion from 'react-confetti-explosion';
 import { useIDKit } from '@worldcoin/idkit'
 
@@ -653,8 +658,8 @@ export default function Barcelona() {
                         className="team-logo"
                       />
                       <img
-                        src={team2Logo}
-                        alt="Team 2 Logo"
+                        src={team3Logo}
+                        alt="Team 3 Logo"
                         className="team-logo"
                       />
                     </div>
@@ -705,8 +710,8 @@ export default function Barcelona() {
                         className="team-logo"
                       />
                       <img
-                        src={team2Logo}
-                        alt="Team 2 Logo"
+                        src={team4Logo}
+                        alt="Team 4 Logo"
                         className="team-logo"
                       />
                     </div>
@@ -756,8 +761,8 @@ export default function Barcelona() {
                         className="team-logo"
                       />
                       <img
-                        src={team2Logo}
-                        alt="Team 2 Logo"
+                        src={team5Logo}
+                        alt="Team 5 Logo"
                         className="team-logo"
                       />
                     </div>
@@ -807,8 +812,8 @@ export default function Barcelona() {
                         className="team-logo"
                       />
                       <img
-                        src={team2Logo}
-                        alt="Team 2 Logo"
+                        src={team6Logo}
+                        alt="Team 6 Logo"
                         className="team-logo"
                       />
                     </div>
@@ -858,8 +863,8 @@ export default function Barcelona() {
                         className="team-logo"
                       />
                       <img
-                        src={team2Logo}
-                        alt="Team 2 Logo"
+                        src={team7Logo}
+                        alt="Team 7 Logo"
                         className="team-logo"
                       />
                     </div>

@@ -1,11 +1,13 @@
 
 .barcelona-header {
-    padding: 10px;
+    padding: 20px;
     background-color: rgba(29, 30, 34, 0.9);
     border-radius: 25px;
     text-align: center;
     color: #ffffff;
-    margin: 36px;
+    margin: 25px;
+    margin-left: 150px;
+    margin-right: 150px;
 }
 
 .header-button{
@@ -34,6 +36,8 @@
     flex-direction: column;
 }
 
+
+
 .custom-button {
     text-decoration: none;
     display: block;
@@ -55,6 +59,8 @@
     display: flex;
     overflow-x: auto;
     margin: 36px;
+    margin-left: 150px;
+    margin-right: 150px;
 }
 
 .bettingCard {
@@ -64,11 +70,10 @@
     text-align: center;
     background-color: rgba(29, 30, 34, 0.9);
     padding: 16px;
-    margin: 8px;
     border-radius: 15px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     min-width: 250px;
-    height: 250px;
+    height: 295px;
     flex: 0 0 auto; /* Allow the element to shrink and grow as needed */
     margin-right: 10px;
 
@@ -81,8 +86,9 @@
 }
 
 .team-logo {
-    width: 50px; /* Adjust the width of the team logos */
+    width: 85px;
     height: auto;
+    padding: 5px;
 }
 
 .score-prediction-container,
@@ -175,10 +181,12 @@
 }
 
 .Lottery-Div {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+    min-width: 250px;
+    height: 250px;
+    padding: 10px;
+    margin: 25px;
+    margin-left: 150px;
+    margin-right: 150px;
 }
 
 
