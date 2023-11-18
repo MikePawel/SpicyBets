@@ -29,6 +29,7 @@ import team5Logo from "../../assets/INTER-2.png";
 import team6Logo from "../../assets/NAP.png";
 import team7Logo from "../../assets/VCF.png";
 import FanTokenGIF from "../../assets/FanToken.gif";
+import PlayerImage from "../../assets/FanTokenIMG.webp";
 import ConfettiExplosion from 'react-confetti-explosion';
 import { useIDKit } from '@worldcoin/idkit'
 
@@ -909,15 +910,23 @@ export default function Barcelona() {
                 </div>
               </div>
 
-              <div className="gif-container">
-                <img src={`data:image/gif;base64,${FanTokenGIF}`} alt="FanToken GIF" style={{ width: '200px', height: '200px' }} />
+              <div class="column-container">
+                <div class="text-column">
+                  <h2>Your Text Goes Here</h2>
+                  <p>This is some sample text. You can replace it with your own content.</p>
+                </div>
+                <div class="image-column">
+                  <img src={PlayerImage} alt="Tokens"  />
+                </div>
               </div>
 
               <div class="lottery-container">
                 <div className="content">
                   Hier kommt irgendwas zur lottery rein, wie soll das aussehen?
                 </div>
-
+                <div className="gif-container">
+                  <img src={FanTokenGIF} alt="FanToken GIF" style={{ width: '200px', height: '200px' }} />
+                </div>
                   {!isHuman && <>
                     <IDKitWidget
                     app_id={worldAppID}

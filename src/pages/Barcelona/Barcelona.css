@@ -73,6 +73,36 @@
 }
 
 
+.column-container {
+    padding-right: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 20px;
+    margin: 25px;
+    margin-left: 150px;
+    margin-right: 150px;
+}
+
+/* Style for the text column */
+.text-column {
+    flex: 1;
+    padding-right: 20px;
+}
+
+/* Style for the image column */
+.image-column {
+    flex: 1;
+    width: 360px;
+    height: 295px;
+}
+
+/* Ensure the image takes the full width of its container */
+.image-column img {
+    width: 360px;
+    height: 295px;
+}
+
 .bettingCard {
     display: flex;
     flex-direction: column;
