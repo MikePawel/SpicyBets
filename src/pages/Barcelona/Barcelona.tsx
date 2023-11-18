@@ -135,69 +135,319 @@ export default function Barcelona() {
 
           <ThemeProvider theme={darkTheme}>
             <div className="center-container">
-              <div className="Reward-Div">
-                <Paper style={paperStyle}>
-                  This is the reward section <br></br>
-                  you can exchange tokens for real rewards like tickets or merch
-                </Paper>
+              <div className="bet-container-row">
+                <div className="bet-container">
+                  <div className="bettingCard">
+                    <div className="team-logos-container">
+                      <img
+                        src={team1Logo}
+                        alt="Team 1 Logo"
+                        className="team-logo"
+                      />
+                      <img
+                        src={team2Logo}
+                        alt="Team 2 Logo"
+                        className="team-logo"
+                      />
+                    </div>
 
-                <div className="bettingCard">
-                  <div className="team-logos-container">
-                    <img
-                      src={team1Logo}
-                      alt="Team 1 Logo"
-                      className="team-logo"
-                    />
-                    <img
-                      src={team2Logo}
-                      alt="Team 2 Logo"
-                      className="team-logo"
-                    />
+                    <div className="score-prediction-container">
+                      <input
+                        type="number"
+                        placeholder="0"
+                        min="0"
+                        value={team1Score}
+                        onChange={(e) => setTeam1Score(e.target.value)}
+                        className="score-input"
+                      />
+                      <input
+                        type="number"
+                        placeholder="0"
+                        min="0"
+                        value={team2Score}
+                        onChange={(e) => setTeam2Score(e.target.value)}
+                        className="score-input"
+                      />
+                    </div>
+                    <div className="bet-amount-container">
+                      <input
+                        type="number"
+                        placeholder="Bet Amount"
+                        min="0"
+                        value={betAmount}
+                        onChange={(e) => setBetAmount(e.target.value)}
+                        className="bet-amount-input"
+                      />
+                    </div>
+
+                    <div
+                      variant="contained"
+                      onClick={submitBet}
+                      className="submit-bet-button"
+                    >
+                      SUBMIT
+                    </div>
+
                   </div>
 
-                  <div className="score-prediction-container">
-                    <input
-                      type="number"
-                      placeholder="0"
-                      min="0"
-                      value={team1Score}
-                      onChange={(e) => setTeam1Score(e.target.value)}
-                      className="score-input"
-                    />
-                    <input
-                      type="number"
-                      placeholder="0"
-                      min="0"
-                      value={team2Score}
-                      onChange={(e) => setTeam2Score(e.target.value)}
-                      className="score-input"
-                    />
-                  </div>
-                  <div className="bet-amount-container">
-                    <input
-                      type="number"
-                      placeholder="Bet Amount"
-                      min="0"
-                      value={betAmount}
-                      onChange={(e) => setBetAmount(e.target.value)}
-                      className="bet-amount-input"
-                    />
-                  </div>
-                  <div
-                    variant="contained"
-                    onClick={submitBet}
-                    className="submit-bet-button"
-                  >
-                    SUBMIT
+                  <div className="bettingCard">
+                    <div className="team-logos-container">
+                      <img
+                        src={team1Logo}
+                        alt="Team 1 Logo"
+                        className="team-logo"
+                      />
+                      <img
+                        src={team2Logo}
+                        alt="Team 2 Logo"
+                        className="team-logo"
+                      />
+                    </div>
+
+                    <div className="score-prediction-container">
+                      <input
+                        type="number"
+                        placeholder="0"
+                        min="0"
+                        value={team1Score}
+                        onChange={(e) => setTeam1Score(e.target.value)}
+                        className="score-input"
+                      />
+                      <input
+                        type="number"
+                        placeholder="0"
+                        min="0"
+                        value={team2Score}
+                        onChange={(e) => setTeam2Score(e.target.value)}
+                        className="score-input"
+                      />
+                    </div>
+                    <div className="bet-amount-container">
+                      <input
+                        type="number"
+                        placeholder="Bet Amount"
+                        min="0"
+                        value={betAmount}
+                        onChange={(e) => setBetAmount(e.target.value)}
+                        className="bet-amount-input"
+                      />
+                    </div>
+                    <div
+                      variant="contained"
+                      onClick={submitBet}
+                      className="submit-bet-button"
+                    >
+                      SUBMIT
+                    </div>
+
                   </div>
 
+                  <div className="bettingCard">
+                    <div className="team-logos-container">
+                      <img
+                        src={team1Logo}
+                        alt="Team 1 Logo"
+                        className="team-logo"
+                      />
+                      <img
+                        src={team2Logo}
+                        alt="Team 2 Logo"
+                        className="team-logo"
+                      />
+                    </div>
+
+                    <div className="score-prediction-container">
+                      <input
+                        type="number"
+                        placeholder="0"
+                        min="0"
+                        value={team1Score}
+                        onChange={(e) => setTeam1Score(e.target.value)}
+                        className="score-input"
+                      />
+                      <input
+                        type="number"
+                        placeholder="0"
+                        min="0"
+                        value={team2Score}
+                        onChange={(e) => setTeam2Score(e.target.value)}
+                        className="score-input"
+                      />
+                    </div>
+                    <div className="bet-amount-container">
+                      <input
+                        type="number"
+                        placeholder="Bet Amount"
+                        min="0"
+                        value={betAmount}
+                        onChange={(e) => setBetAmount(e.target.value)}
+                        className="bet-amount-input"
+                      />
+                    </div>
+                    <div
+                      variant="contained"
+                      onClick={submitBet}
+                      className="submit-bet-button"
+                    >
+                      SUBMIT
+                    </div>
+
+                  </div>
+                  <div className="bettingCard">
+                    <div className="team-logos-container">
+                      <img
+                        src={team1Logo}
+                        alt="Team 1 Logo"
+                        className="team-logo"
+                      />
+                      <img
+                        src={team2Logo}
+                        alt="Team 2 Logo"
+                        className="team-logo"
+                      />
+                    </div>
+
+                    <div className="score-prediction-container">
+                      <input
+                        type="number"
+                        placeholder="0"
+                        min="0"
+                        value={team1Score}
+                        onChange={(e) => setTeam1Score(e.target.value)}
+                        className="score-input"
+                      />
+                      <input
+                        type="number"
+                        placeholder="0"
+                        min="0"
+                        value={team2Score}
+                        onChange={(e) => setTeam2Score(e.target.value)}
+                        className="score-input"
+                      />
+                    </div>
+                    <div className="bet-amount-container">
+                      <input
+                        type="number"
+                        placeholder="Bet Amount"
+                        min="0"
+                        value={betAmount}
+                        onChange={(e) => setBetAmount(e.target.value)}
+                        className="bet-amount-input"
+                      />
+                    </div>
+                    <div
+                      variant="contained"
+                      onClick={submitBet}
+                      className="submit-bet-button"
+                    >
+                      SUBMIT
+                    </div>
+
+                  </div>
+                  <div className="bettingCard">
+                    <div className="team-logos-container">
+                      <img
+                        src={team1Logo}
+                        alt="Team 1 Logo"
+                        className="team-logo"
+                      />
+                      <img
+                        src={team2Logo}
+                        alt="Team 2 Logo"
+                        className="team-logo"
+                      />
+                    </div>
+
+                    <div className="score-prediction-container">
+                      <input
+                        type="number"
+                        placeholder="0"
+                        min="0"
+                        value={team1Score}
+                        onChange={(e) => setTeam1Score(e.target.value)}
+                        className="score-input"
+                      />
+                      <input
+                        type="number"
+                        placeholder="0"
+                        min="0"
+                        value={team2Score}
+                        onChange={(e) => setTeam2Score(e.target.value)}
+                        className="score-input"
+                      />
+                    </div>
+                    <div className="bet-amount-container">
+                      <input
+                        type="number"
+                        placeholder="Bet Amount"
+                        min="0"
+                        value={betAmount}
+                        onChange={(e) => setBetAmount(e.target.value)}
+                        className="bet-amount-input"
+                      />
+                    </div>
+                    <div
+                      variant="contained"
+                      onClick={submitBet}
+                      className="submit-bet-button"
+                    >
+                      SUBMIT
+                    </div>
+
+                  </div>
+                  <div className="bettingCard">
+                    <div className="team-logos-container">
+                      <img
+                        src={team1Logo}
+                        alt="Team 1 Logo"
+                        className="team-logo"
+                      />
+                      <img
+                        src={team2Logo}
+                        alt="Team 2 Logo"
+                        className="team-logo"
+                      />
+                    </div>
+
+                    <div className="score-prediction-container">
+                      <input
+                        type="number"
+                        placeholder="0"
+                        min="0"
+                        value={team1Score}
+                        onChange={(e) => setTeam1Score(e.target.value)}
+                        className="score-input"
+                      />
+                      <input
+                        type="number"
+                        placeholder="0"
+                        min="0"
+                        value={team2Score}
+                        onChange={(e) => setTeam2Score(e.target.value)}
+                        className="score-input"
+                      />
+                    </div>
+                    <div className="bet-amount-container">
+                      <input
+                        type="number"
+                        placeholder="Bet Amount"
+                        min="0"
+                        value={betAmount}
+                        onChange={(e) => setBetAmount(e.target.value)}
+                        className="bet-amount-input"
+                      />
+                    </div>
+                    <div
+                      variant="contained"
+                      onClick={submitBet}
+                      className="submit-bet-button"
+                    >
+                      SUBMIT
+                    </div>
+                  </div>
                 </div>
-
-                <Paper style={paperStyle}>Mock Paper 3</Paper>
-                <Paper style={paperStyle}>Mock Paper 4</Paper>
-                <Paper style={paperStyle}>Mock Paper 5</Paper>
-                <Paper style={paperStyle}>Mock Paper 6</Paper>
               </div>
+
               <div style={{ paddingTop: "50px" }}></div>
               <div className="Lottery-Div">
                 <Paper style={paperStyle}>
