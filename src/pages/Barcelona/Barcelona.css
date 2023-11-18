@@ -101,20 +101,26 @@
 }
 
 .column-container {
-    padding-right: 10px;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
     padding: 20px;
+    border-radius: 25px;
+    text-align: left;
+    color: #ea385a;
     margin: 25px;
     margin-left: 150px;
     margin-right: 150px;
+    height: 350px;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
 }
 
 /* Style for the text column */
 .text-column {
-    flex: 1;
     padding-right: 20px;
+    width: 500px;
 }
 
 /* Style for the image column */

@@ -1067,27 +1067,7 @@ const handleRandomNumberRequest = async () => {
               </div>
 
 
-          <div className="bet-swipe-container">
-            <h1>Icon Descriptions TBD</h1>
-            <ThemeProvider theme={darkTheme}>
-              <Typography>
-                <div className="team-swipe-container">
-                  <img
-                    src={team1Logo}
-                    alt="Team 1 Logo"
-                    className="FCB"
-                  />
-                  <span className="centered-colon">:</span>
-                  <img
-                    src={team2Logo}
-                    alt="Team 2 Logo"
-                    className="TeamBet"
-                  />
-                </div>
-              </Typography>
 
-            </ThemeProvider>
-          </div>
 
 
 
