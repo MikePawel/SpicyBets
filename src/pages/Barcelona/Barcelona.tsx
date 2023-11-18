@@ -13,11 +13,267 @@ import {
 import { Link } from "react-router-dom";
 import { IDKitWidget } from "@worldcoin/idkit";
 import axios from "axios";
+import { ethers } from "ethers";
 import team1Logo from "../../assets/FCB.jpeg";
 import team2Logo from "../../assets/JUV.jpeg";
 import ConfettiExplosion from 'react-confetti-explosion';
 import { useIDKit } from '@worldcoin/idkit'
 
+
+const treePlantingTrackerABI = [
+  {
+    inputs: [],
+    stateMutability: "nonpayable",
+    type: "constructor",
+  },
+  {
+    inputs: [],
+    name: "getBalance",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "user",
+        type: "address",
+      },
+    ],
+    name: "getTreesPlanted",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "owner",
+    outputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "plantTree",
+    outputs: [],
+    stateMutability: "payable",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "totalTrees",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
+    ],
+    name: "treesPlanted",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address payable",
+        name: "recipient",
+        type: "address",
+      },
+    ],
+    name: "withdraw",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+];
+const erc20DepositAndSendABI = [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_tokenAddress",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "sender",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "Deposited",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "beneficiary",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "Sent",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "deposit",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getTokenBalance",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "beneficiary",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "sendToAddress",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "token",
+      "outputs": [
+        {
+          "internalType": "contract IERC20",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ];
+
+const erc20ABI = [
+    // The `approve` function is all that's needed for the approval transaction
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "spender",
+          "type": "address"
+        },
+        {
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "approve",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "type": "function"
+    }
+  ];
+
+  const treePlantingTrackerAddress = "0xc214194FA4e72F2d7A57E2e6E98FB186e64D7975";
+  const erc20DepositAndSendAddress = '0xe742c9808B2c190921e294E2ABd99c8E365638CE';
+  const erc20TokenAddress = '0x63667746A7A005E45B1fffb13a78d0331065Ff7f';
 
 export default function Barcelona() {
   const worldAppID = import.meta.env.VITE_WLD_APP_ID;
@@ -94,20 +350,103 @@ export default function Barcelona() {
     }
   };
 
-  const submitBet = () => {
-    const team1ScoreValue = Number(team1Score);
-    const team2ScoreValue = Number(team2Score);
-    const betAmountValue = Number(betAmount);
-
-    // Ensure all values are non-negative
-    if (team1ScoreValue < 0 || team2ScoreValue < 0 || betAmountValue < 0) {
-      alert("Scores and bet amount cannot be negative.");
+  const handleApprove = async (tokenAmount) => {
+    if (!window.ethereum) {
+      alert('Please install MetaMask');
       return;
     }
-    console.log(
-      `Bet submitted for scores - Team 1: ${team1Score}, Team 2: ${team2Score}`
-    );
-    // You would likely want to connect to a smart contract or backend service here
+  
+    // Convert the token amount to the correct format
+    const tokenAmountInWei = ethers.utils.parseUnits(tokenAmount, 'ether'); // Replace 'ether' with the ERC20 token's decimals
+  
+    try {
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
+      await provider.send("eth_requestAccounts", []); // Request account access
+      const signer = provider.getSigner();
+  
+      // Create a new instance of the ERC20 contract with a signer
+      const tokenContract = new ethers.Contract(erc20TokenAddress, erc20ABI, signer);
+  
+      // Call the approve function
+      const tx = await tokenContract.approve(erc20DepositAndSendAddress, tokenAmountInWei);
+      await tx.wait(); // Wait for the transaction to be mined
+  
+      // Notify the user
+      alert(`Approval successful for ${tokenAmount} tokens!`);
+      return true; // Return true to indicate a successful approval
+    } catch (error) {
+      console.error('Error during approval:', error);
+      alert('Error during approval. Please try again.');
+      return false; // Return false to indicate a failed approval
+    }
+  };
+  
+
+  const submitBet = async () => {
+    if (!window.ethereum) {
+      alert('Please install MetaMask');
+      return;
+    }
+
+    const betAmountInTokenUnits = ethers.utils.parseUnits(betAmount, 'ether'); // Replace 'ether' with the token's decimals
+
+    // First, check for and request approval if necessary
+    const hasApproved = await handleApprove(betAmount);
+    if (!hasApproved) {
+      return; // Stop if the user has not approved the token transfer
+    }
+  
+    // Convert the bet amount to the correct format, e.g., wei for ETH or the correct decimals for ERC20 tokens
+    const betAmountIn6 = ethers.utils.parseUnits(betAmount, 1); // Replace 'ether' with the correct number of decimals if not dealing with ETH
+  
+    try {
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
+      await provider.send("eth_requestAccounts", []); // Request account access
+      const signer = provider.getSigner();
+  
+      // Create a new instance of the contract with a signer, which allows update methods
+      const contract = new ethers.Contract(erc20DepositAndSendAddress, erc20DepositAndSendABI, signer);
+  
+      // Call the deposit function
+      const tx = await contract.deposit(betAmount);
+      await tx.wait(); // Wait for the transaction to be mined
+  
+      // After successful deposit
+      alert(`Successfully deposited ${betAmount} tokens for betting!`);
+    } catch (error) {
+      console.error('Error during deposit:', error);
+      alert('Error during deposit. Please try again.');
+    }
+  };
+
+  const handleWithdraw = async () => {
+    if (!window.ethereum) {
+      alert('Please install MetaMask');
+      return;
+    }
+  
+    // Convert the withdraw amount to the correct units if necessary
+    // const withdrawAmountInTokenUnits = ethers.utils.parseUnits(withdrawAmount, 6);
+  
+    try {
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
+      await provider.send("eth_requestAccounts", []); // Request account access
+      const signer = provider.getSigner();
+  
+      // Create a new instance of the contract with a signer
+      const contract = new ethers.Contract(erc20DepositAndSendAddress, erc20DepositAndSendABI, signer);
+  
+      // Call the withdraw function
+      // Make sure to pass the correct parameters if the withdraw function requires any
+      const tx = await contract.sendToAddress("0x7ce145E253EcAc49Ec0Aa66Fd733a443463C7A46", 1);
+      await tx.wait(); // Wait for the transaction to be mined
+  
+      // Notify the user
+      alert('Withdrawal successful!');
+    } catch (error) {
+      console.error('Error during withdrawal:', error);
+      alert('Error during withdrawal. Please try again.');
+    }
   };
 
   const onSuccess = async (response: any) => {
@@ -488,7 +827,9 @@ export default function Barcelona() {
 
               <div className="Donation-Div">
                 <Paper style={paperStyle}>
-                  Test
+                <Button variant="contained" onClick={() => handleWithdraw()} className="withdraw-button">
+                   Withdraw   
+                  </Button>
                 </Paper>
               </div>
             </div>
