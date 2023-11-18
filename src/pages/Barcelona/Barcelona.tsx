@@ -310,6 +310,40 @@ export default function Barcelona() {
     setTokenAmount(Number(tempAmount));
   };
 
+  const fetchTreeCount = async () => {
+    if (wallet && wallet.accounts && wallet.accounts[0] && window.ethereum) {
+      try {
+        const provider = new ethers.providers.Web3Provider(window.ethereum);
+        const contract = new ethers.Contract(
+          treePlantingTrackerAddress,
+          treePlantingTrackerABI,
+          provider
+        );
+        const count = await contract.getTreesPlanted(wallet.accounts[0]);
+        setTreeCount(count.toNumber());
+      } catch (error) {
+        console.error("Error fetching tree count:", error);
+      }
+    }
+  };
+
+  const fetchTotalTree = async () => {
+    if (wallet && wallet.accounts && wallet.accounts[0] && window.ethereum) {
+      try {
+        const provider = new ethers.providers.Web3Provider(window.ethereum);
+        const contract = new ethers.Contract(
+          treePlantingTrackerAddress,
+          treePlantingTrackerABI,
+          provider
+        );
+        const count = await contract.totalTrees();
+        seTtotalTrees(count.toNumber());
+      } catch (error) {
+        console.error("Error fetching tree count:", error);
+      }
+    }
+  };
+
  
   useEffect(() => {
     handleGetTokenAmount();
@@ -325,6 +359,47 @@ export default function Barcelona() {
       </div>
     );
   }
+
+  const handlePlantTree = async () => {
+    if (!window.ethereum) {
+      alert("Please install MetaMask");
+      return;
+    }
+
+    try {
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
+      await provider.send("eth_requestAccounts", []); // Request account access
+      const signer = provider.getSigner();
+      const contract = new ethers.Contract(
+        treePlantingTrackerAddress,
+        treePlantingTrackerABI,
+        signer
+      );
+
+      // Calculate the amount to send (assuming 1 token per tree)
+      const amountInWei = ethers.utils.parseEther(String(numberOfTrees));
+      const tx = await contract.plantTree({ value: amountInWei });
+      await tx.wait(); // Wait for the transaction to be mined
+
+      // Fetch the updated tree count from the blockchain
+      fetchTreeCount();
+      fetchTotalTree();
+
+      // Notify the user of a successful transaction
+      alert(`Successfully planted ${numberOfTrees} tree(s)!`);
+    } catch (error) {
+      console.error("Error planting tree:", error);
+      alert("Error planting tree");
+    }
+  };
+
+  const incrementTrees = () => {
+    setNumberOfTrees((prevCount) => prevCount + 1);
+  };
+
+  const decrementTrees = () => {
+    setNumberOfTrees((prevCount) => Math.max(prevCount - 1, 1));
+  };
 
   const isSuccess = async (response: any) => {
     try {
@@ -830,6 +905,25 @@ export default function Barcelona() {
                 <Button variant="contained" onClick={() => handleWithdraw()} className="withdraw-button">
                    Withdraw   
                   </Button>
+                  <div className="tree-interaction-container">
+                    <div className="tree-counter">
+                      <Button onClick={decrementTrees}>-</Button>
+                      <span>{numberOfTrees}</span>
+                      <Button onClick={incrementTrees}>+</Button>
+                    </div>
+                    <Button
+                      variant="contained"
+                      onClick={handlePlantTree}
+                      className="tree-plant-button"
+                    >
+                      Plant a Tree
+                    </Button>
+                    <Typography className="trees-planted-text">
+                      Trees Planted: {treeCount}
+                      <br />
+                      Total Trees: {totalTrees}
+                    </Typography>
+                  </div>
                 </Paper>
               </div>
             </div>
