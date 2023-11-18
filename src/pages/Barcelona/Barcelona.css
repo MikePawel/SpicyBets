@@ -123,6 +123,7 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
+    align-items: center;
 }
 
 .team-logo {
@@ -134,6 +135,12 @@
 .score-prediction-container,
 .bet-amount-container {
     margin-bottom: 10px;
+}
+
+.centered-colon {
+    margin: 0 10px;
+    font-size: xxx-large;
+    color: #ea385a;
 }
 
 .score-input

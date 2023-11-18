@@ -22,7 +22,7 @@ import { IDKitWidget } from "@worldcoin/idkit";
 import axios from "axios";
 import { ethers } from "ethers";
 import team1Logo from "../../assets/FCB.png";
-import team2Logo from "../../assets/AM.png";
+import team2Logo from "../../assets/ML.png";
 import team3Logo from "../../assets/GAL.png";
 import team4Logo from "../../assets/IBFK.png";
 import team5Logo from "../../assets/INTER-2.png";
@@ -606,6 +606,7 @@ export default function Barcelona() {
                         alt="Team 1 Logo"
                         className="team-logo"
                       />
+                      <span className="centered-colon">:</span>
                       <img
                         src={team2Logo}
                         alt="Team 2 Logo"
@@ -659,6 +660,7 @@ export default function Barcelona() {
                         alt="Team 1 Logo"
                         className="team-logo"
                       />
+                      <span className="centered-colon">:</span>
                       <img
                         src={team3Logo}
                         alt="Team 3 Logo"
@@ -711,6 +713,7 @@ export default function Barcelona() {
                         alt="Team 1 Logo"
                         className="team-logo"
                       />
+                      <span className="centered-colon">:</span>
                       <img
                         src={team4Logo}
                         alt="Team 4 Logo"
@@ -762,6 +765,7 @@ export default function Barcelona() {
                         alt="Team 1 Logo"
                         className="team-logo"
                       />
+                      <span className="centered-colon">:</span>
                       <img
                         src={team5Logo}
                         alt="Team 5 Logo"
@@ -813,6 +817,7 @@ export default function Barcelona() {
                         alt="Team 1 Logo"
                         className="team-logo"
                       />
+                      <span className="centered-colon">:</span>
                       <img
                         src={team6Logo}
                         alt="Team 6 Logo"
@@ -864,6 +869,7 @@ export default function Barcelona() {
                         alt="Team 1 Logo"
                         className="team-logo"
                       />
+                      <span className="centered-colon">:</span>
                       <img
                         src={team7Logo}
                         alt="Team 7 Logo"
