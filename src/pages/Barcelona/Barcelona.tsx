@@ -5,10 +5,17 @@ import { useMetaMask } from "~/hooks/useMetaMask";
 import {
   Button,
   CircularProgress,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
   Paper,
   ThemeProvider,
   Typography,
   createTheme,
+  useMediaQuery,
+  useTheme,
 } from "@mui/material";
 import { Link } from "react-router-dom";
 import { IDKitWidget } from "@worldcoin/idkit";
@@ -292,6 +299,32 @@ export default function Barcelona() {
 
   const { open, setOpen } = useIDKit()
 
+  const [openDialogWin, setOpenDialogWin] = React.useState(false);
+  const theme = useTheme();
+  const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
+
+  const handleClickOpenDialogWin = () => {
+    setExploding(true)
+    setOpenDialogWin(true);
+  };
+  const handleCloseDialogWin = () => {
+    setExploding(false)
+    setOpenDialogWin(false);
+  };
+
+  const [openDialogLoose, setOpenDialogLoose] = React.useState(false);
+
+
+  const handleClickOpenDialogLoose = () => {
+    setOpenDialogLoose(true);
+  };
+
+  const handleCloseDialogLoose = () => {
+    setOpenDialogLoose(false);
+  };
+
+
+
   const darkTheme = createTheme({
     palette: {
       mode: "dark",
@@ -425,7 +458,7 @@ export default function Barcelona() {
     }
   };
 
-  const handleApprove = async (tokenAmount) => {
+  const handleApprove = async (tokenAmount: string) => {
     if (!window.ethereum) {
       alert('Please install MetaMask');
       return;
@@ -534,13 +567,12 @@ export default function Barcelona() {
       <div style={{ paddingTop: "68px" }}></div>
       {tokenAmount > 0 && (
         <>
-        {exploding && <ConfettiExplosion />}
+        
           <div className="wrapper">
           </div>
           <div className="barcelona-header">
             <h2>Barcelona SpicyBets</h2>
 
-            {exploding && <ConfettiExplosion />}
             <ThemeProvider theme={darkTheme}>
                  <Typography>
                    You have{" "}
@@ -552,7 +584,6 @@ export default function Barcelona() {
                    <br />
                    <a href="#" className="header-button">BUY TOKENs</a>
                  </Typography>
-                  {exploding && <ConfettiExplosion />}
 
             </ThemeProvider>
           </div>
@@ -897,6 +928,61 @@ export default function Barcelona() {
 
                   <Button onClick={() => setExploding(false)}>Enter schmoney getter</Button>
                   <Button onClick={() => setExploding(true)}>Simulate win</Button>
+                </Paper>
+              </div>
+
+
+              <div style={{ paddingTop: "50px" }}></div>
+              <div className="Lottery-Div">
+                <Paper style={paperStyle}>
+                  Try your luck!
+
+
+                  <Dialog
+                    fullScreen={fullScreen}
+                    open={openDialogWin}
+                    onClose={handleCloseDialogWin}
+                    aria-labelledby="responsive-dialog-title"
+                  >
+                    <DialogTitle id="responsive-dialog-title">
+                      {"CONTRATULATIONS, YOU WON"}&nbsp; &#127881; &#127881; &#127881;
+                    </DialogTitle>
+                    <DialogContent>
+                      <DialogContentText>
+                        You just doubled your money!
+                      </DialogContentText>
+                    </DialogContent>
+                    <DialogActions>
+                      <Button onClick={handleCloseDialogWin} autoFocus>
+                        Awesome!
+                      </Button>
+                    </DialogActions>
+                  </Dialog>
+                  {exploding && <ConfettiExplosion />}
+                  <Button onClick={() => handleClickOpenDialogWin()}>Win Dialog</Button>
+
+
+                  <Dialog
+                    fullScreen={fullScreen}
+                    open={openDialogLoose}
+                    onClose={handleCloseDialogLoose}
+                    aria-labelledby="responsive-dialog-title"
+                  >
+                    <DialogTitle id="responsive-dialog-title">
+                      {"You lost :("}
+                    </DialogTitle>
+                    <DialogContent>
+                      <DialogContentText>
+                        Try your luck again to double your money!
+                      </DialogContentText>
+                    </DialogContent>
+                    <DialogActions>
+                      <Button onClick={handleCloseDialogLoose} autoFocus>
+                        Try again
+                      </Button>
+                    </DialogActions>
+                  </Dialog>
+                  <Button onClick={() => handleClickOpenDialogLoose()}>Loose Dialog</Button>
                 </Paper>
               </div>
 
