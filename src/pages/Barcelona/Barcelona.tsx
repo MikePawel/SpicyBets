@@ -656,6 +656,7 @@ export default function Barcelona() {
   const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
 
   const [bet1, setBet1] = useState(false)
+  const [bet2, setBet2] = useState(false)
 
   const handleClickOpenDialogWin = () => {
     setExploding(true)
@@ -861,7 +862,11 @@ export default function Barcelona() {
 
   const submitBet = async () => {
 
+    if(bet1 == true){
+      setBet2(true)
+    }
     setBet1(true)
+    
     if (!window.ethereum) {
       alert('Please install MetaMask');
       return;
@@ -927,55 +932,6 @@ export default function Barcelona() {
       alert('Error during withdrawal. Please try again.');
     }
   };
-/*
-  const handleRandomNumberRequest = async () => {
-    if (!window.ethereum) {
-      alert("Please install MetaMask");
-      return;
-    }
-  
-    try {
-      const provider = new ethers.providers.Web3Provider(window.ethereum);
-      await provider.send("eth_requestAccounts", []); // Request account access
-      const signer = provider.getSigner();
-      const qrngContract = new ethers.Contract(
-        randomNumberAddress,
-        randomNumberABI,
-        signer
-      );
-  
-      // Call makeRequestUint256 to request a random number
-      const requestTx = await qrngContract.makeRequestUint256();
-      await requestTx.wait(); // Wait for the transaction to be mined
-  
-      // After the transaction is confirmed, you can call your getter function
-      // However, you should wait until the Airnode callback has been called.
-      // For simplicity, let's just log the transaction and assume the callback will be handled by the contract's event
-      console.log(`Random number request sent, transaction hash: ${requestTx.hash}`);
-      alert("Random number request sent. Waiting for fulfillment...");
-    
-      const randomNumber = await qrngContract.getRandomNumber();
-
-      // Convert the BigNumber to a string to safely handle large numbers
-      const randomNumberString = randomNumber.toString();
-
-      // Convert the string to a BigInt for mathematical operations
-      const randomNumberBigInt = BigInt(randomNumberString);
-
-      // Determine if the number is odd or even
-      const result = randomNumberBigInt % BigInt(2) === BigInt(0) ? 0 : 1;
-
-      console.log(`Random number (BigInt): ${randomNumberBigInt}, Result (0 or 1): ${result}`);
-
-  
-      // Normally, you would have an off-chain service listening to the event and then calling your contract
-      // or you would listen for the event from your contract to update the UI accordingly
-    } catch (error) {
-      console.error("Error requesting random number:", error);
-      alert("Error requesting random number. Please try again.");
-    }
-  };
-*/
 
 const handleRandomNumberRequest = async () => {
   try {
@@ -1122,7 +1078,7 @@ const handleRandomNumberRequest = async () => {
                       onClick={submitBet}
                       className="submit-bet-button"
                     >
-                      EVEN
+                      draw
                     </div>
                     </Tooltip>
                     <Tooltip title="The Odds of Barcelona winning are 85%" arrow>
@@ -1139,6 +1095,8 @@ const handleRandomNumberRequest = async () => {
 
                     </div>
                   }
+                  {!bet2 && <div>
+                    
                   <div className="bettingCard">
                     <div className="team-logos-container">
                       <img
@@ -1183,7 +1141,7 @@ const handleRandomNumberRequest = async () => {
                       onClick={submitBet}
                       className="submit-bet-button"
                     >
-                      EVEN
+                      draw
                     </div>
                     </Tooltip>
                     <Tooltip title="The Odds of Barcelona winning are 85%" arrow>
@@ -1198,7 +1156,7 @@ const handleRandomNumberRequest = async () => {
 
                     </div>
 
-                    </div>
+                    </div></div>}
                     <div className="bettingCard">
                     <div className="team-logos-container">
                       <img
@@ -1243,7 +1201,7 @@ const handleRandomNumberRequest = async () => {
                       onClick={submitBet}
                       className="submit-bet-button"
                     >
-                      EVEN
+                      draw
                     </div>
                     </Tooltip>
                     <Tooltip title="The Odds of Barcelona winning are 85%" arrow>
@@ -1303,7 +1261,7 @@ const handleRandomNumberRequest = async () => {
                       onClick={submitBet}
                       className="submit-bet-button"
                     >
-                      EVEN
+                      draw
                     </div>
                     </Tooltip>
                     <Tooltip title="The Odds of Barcelona winning are 85%" arrow>
@@ -1363,7 +1321,7 @@ const handleRandomNumberRequest = async () => {
                       onClick={submitBet}
                       className="submit-bet-button"
                     >
-                      EVEN
+                      draw
                     </div>
                     </Tooltip>
                     <Tooltip title="The Odds of Barcelona winning are 85%" arrow>
@@ -1423,7 +1381,7 @@ const handleRandomNumberRequest = async () => {
                       onClick={submitBet}
                       className="submit-bet-button"
                     >
-                      EVEN
+                      draw
                     </div>
                     </Tooltip>
                     <Tooltip title="The Odds of Barcelona winning are 85%" arrow>
