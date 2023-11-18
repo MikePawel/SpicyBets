@@ -32,6 +32,7 @@ import team7Logo from "../../assets/VCF.png";
 import FanTokenGIF from "../../assets/FanToken.gif";
 import PlayerImage from "../../assets/FanTokenIMG.webp";
 import Nouns from "../../assets/nounify.png";
+import ConfettiExplosion from 'react-confetti-explosion';
 
 import { useIDKit } from '@worldcoin/idkit'
 
@@ -649,6 +650,8 @@ export default function Barcelona() {
   const [requestId, setRequestId] = useState(null);
   const [currTime, setCurrTime] = useState("")
 
+  const [isExploding, setIsExploding] = React.useState(false);
+
   const [isHuman, setIsHuman] = useState(false)
 
   const { open, setOpen } = useIDKit()
@@ -661,10 +664,12 @@ export default function Barcelona() {
   const [bet2, setBet2] = useState(false)
 
   const handleClickOpenDialogWin = () => {
+    setIsExploding(true)
     setExploding(true)
     setOpenDialogWin(true);
   };
   const handleCloseDialogWin = () => {
+    setIsExploding(false)
     setExploding(false)
     setOpenDialogWin(false);
   };
@@ -820,7 +825,7 @@ export default function Barcelona() {
       };
 
       // Send the reqBody to the backend
-      const backendUrl = "http://localhost:5000/verify";
+      const backendUrl = "http://localhost:5001/verify";
       const backendResponse = await axios.post(backendUrl, reqBody);
       console.log("Backend response:", backendResponse.data);
       setIsHuman(true)
@@ -868,6 +873,7 @@ export default function Barcelona() {
 
     if(bet1 == true){
       setBet2(true)
+      throw new Error('we are done here!')
     }
     setBet1(true)
     
@@ -938,6 +944,7 @@ export default function Barcelona() {
   };
 
 const handleRandomNumberRequest = async () => {
+  setIsExploding(false)
   try {
     
       const providerUrl = 'https://arbitrum-goerli.infura.io/v3/a146daf63d93490995823f0910f50118'; // Replace with your provider
@@ -1406,11 +1413,12 @@ const handleRandomNumberRequest = async () => {
               <div className="lottery-container">
 
                 <div style={{display: 'flex', flexDirection: 'column'}}>
+                {isExploding && <ConfettiExplosion />}
                   
                 <div className="lottery-text-column">
                   FLIP A COIN DOUBLE YOUR MONEY
                 </div>
-
+                {isExploding && <ConfettiExplosion />}
                 <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-evenly', alignItems: 'baseline', paddingTop: '40px'}}>
                   
                 <div className="bet-amount-container">
@@ -1429,6 +1437,50 @@ const handleRandomNumberRequest = async () => {
                     >
                       FLIP
                     </div>
+                    <Dialog
+                     fullScreen={fullScreen}
+                     open={openDialogWin}
+                     onClose={handleCloseDialogWin}
+                     aria-labelledby="responsive-dialog-title"
+                   >
+                     <DialogTitle id="responsive-dialog-title">
+                       {"CONTRATULATIONS, YOU WON"}&nbsp; &#127881; &#127881; &#127881;
+                     </DialogTitle>
+                     <DialogContent>
+                       <DialogContentText>
+                         You just doubled your money!
+                       </DialogContentText>
+                     </DialogContent>
+                     <DialogActions>
+                       <Button onClick={handleCloseDialogWin} autoFocus>
+                         Awesome!
+                       </Button>
+                     </DialogActions>
+                   </Dialog>
+                   {exploding && <ConfettiExplosion />}
+
+
+                   <Dialog
+                     fullScreen={fullScreen}
+                     open={openDialogLoose}
+                     onClose={handleCloseDialogLoose}
+                     aria-labelledby="responsive-dialog-title"
+                   >
+                     <DialogTitle id="responsive-dialog-title">
+                       {"You lost :("}
+                     </DialogTitle>
+                     <DialogContent>
+                       <DialogContentText>
+                         Try your luck again to double your money!
+                       </DialogContentText>
+                     </DialogContent>
+                     <DialogActions>
+                       <Button onClick={handleCloseDialogLoose} autoFocus>
+                         Try again
+                       </Button>
+                     </DialogActions>
+                   </Dialog>
+                    {isExploding && <ConfettiExplosion />}
 
                 </div>
 
@@ -1440,6 +1492,7 @@ const handleRandomNumberRequest = async () => {
                   <div className="gif-container">
                     <img src={FanTokenGIF} alt="FanToken GIF" style={{ width: '400px', height: '400px' }} />
                   </div>
+                  {exploding && <ConfettiExplosion />}
                 </div>
                 </div>
               </div>
