@@ -530,10 +530,13 @@ export default function Barcelona() {
 
   return (
     <>
+
       <div style={{ paddingTop: "68px" }}></div>
       {tokenAmount > 0 && (
         <>
         {exploding && <ConfettiExplosion />}
+          <div className="wrapper">
+          </div>
           <div className="barcelona-header">
             <h2>Barcelona SpicyBets</h2>
 
@@ -926,6 +929,7 @@ export default function Barcelona() {
                 </Paper>
               </div>
             </div>
+
           </ThemeProvider>
         </>
       )}
@@ -952,6 +956,7 @@ export default function Barcelona() {
             </Paper>
           </ThemeProvider>
         </div>
+
       )}
     </>
   );

@@ -5,7 +5,7 @@
     border-radius: 25px;
     text-align: center;
     color: #ffffff;
-    margin: 10px;
+    margin: 36px;
 }
 
 .header-button{
@@ -27,13 +27,6 @@
 }
 
 
-.mini-container {
-    border-radius: 25px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: #ffffff;
-}
 
 .center-container {
     padding-right: 10px;
@@ -61,6 +54,7 @@
 .bet-container {
     display: flex;
     overflow-x: auto;
+    margin: 36px;
 }
 
 .bettingCard {
