@@ -301,7 +301,7 @@ export default function Barcelona() {
   const [betAmount, setBetAmount] = useState("");
   const [exploding, setExploding] = useState(false)
 
-  const [isHuman, setIsHuman] = useState(false)
+  const [isHuman, setIsHuman] = useState(true)
 
   const { open, setOpen } = useIDKit()
 
@@ -569,9 +569,11 @@ export default function Barcelona() {
 
   return (
     <>
-
+      
       <div style={{ paddingTop: "68px" }}></div>
-      {tokenAmount > 0 && (
+      {isHuman && <>  
+
+        {tokenAmount > 0 && (
         <>
 
           <div className="barcelona-header">
@@ -1026,6 +1028,9 @@ export default function Barcelona() {
           </ThemeProvider>
         </>
       )}
+      
+      
+      
 
       {tokenAmount == 0 && (
         <div className="container">
@@ -1051,6 +1056,43 @@ export default function Barcelona() {
         </div>
 
       )}
+      </>}
+      {!isHuman && <>
+        <div style={{display: 'flex', alignContent: 'center', alignItems: 'center', alignSelf: 'center', flexDirection: 'column'}}>
+          <ThemeProvider theme={darkTheme}>
+            <Paper
+              className="container"
+              elevation={10}
+              variant="elevation"
+              sx={{
+                width: 300,
+                height: 200,
+                borderRadius: 3,
+                padding: "10px",
+                textAlign: "center",
+              }}
+            >
+              <Typography variant="h5" component="div">
+                You did not verify that you are a human yet!
+                <IDKitWidget
+                    app_id={worldAppID}
+                    action="verify"
+                    signal="login"
+                    handleVerify={isSuccess}
+                    onSuccess={onSuccess}
+                    credential_types={["orb"]}
+                    enableTelemetry
+                  >
+                    {({ open }) => (
+                      <button onClick={open}>Verify with World ID</button>
+                    )}
+                  </IDKitWidget>
+              </Typography>
+              <Link to="/">Go back</Link>
+            </Paper>
+          </ThemeProvider>
+        </div>
+        </>}
     </>
   );
 }
