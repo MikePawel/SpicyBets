@@ -7,21 +7,23 @@
 import hre from "hardhat";
 
 async function main() {
-    // We get the contract to deploy
-    const TreePlantingTracker = await hre.ethers.getContractFactory("TreePlantingTracker");
+  // We get the contract to deploy
+  const TreePlantingTracker = await hre.ethers.getContractFactory(
+    "TreePlantingTracker"
+  );
 
-    // Deploy the contract
-    const treePlantingTracker = await TreePlantingTracker.deploy();
+  // Deploy the contract
+  const treePlantingTracker = await TreePlantingTracker.deploy();
 
-    // Wait for the deployment to be mined
-    await treePlantingTracker.deployed();
+  // Wait for the deployment to be mined
+  await treePlantingTracker.deployed();
 
-    console.log("TreePlantingTracker deployed to:", treePlantingTracker.address);
+  console.log("TreePlantingTracker deployed to:", treePlantingTracker.address);
 }
 
 // We recommend this pattern to be able to use async/await everywhere
 // and properly handle errors.
 main().catch((error) => {
-    console.error(error);
-    process.exitCode = 1;
+  console.error(error);
+  process.exitCode = 1;
 });
